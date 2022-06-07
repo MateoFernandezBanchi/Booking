@@ -43,7 +43,7 @@
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="link-nav"><a class="white" href="index.html">Home</a></li>
+                        <li class="link-nav"><a class="white" href="index.php">Home</a></li>
                         <li class="link-nav"><a class="white" href="about.html">About</a></li>
                         <li class="link-nav dropdown">
                             <a class=" dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"

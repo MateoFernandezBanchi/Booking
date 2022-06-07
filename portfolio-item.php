@@ -77,6 +77,8 @@ $array_dias     = explode("-", $dias_laborales);
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="link-nav" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="link-nav" href="index.html">Services</a></li>
                         <li class="nav-item dropdown">
                             <a class="link-nav dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Services</a>
