@@ -115,7 +115,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                                 </div>
                                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                     <div class="d-flex justify-content-center mb-5">
-                                        <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>&empleado=<?php echo $row['empleado']?>#turnos">See more</a></button>
+                                        <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
                                     </div>
                                 </div> 
                             </div>

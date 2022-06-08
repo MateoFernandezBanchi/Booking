@@ -1,9 +1,9 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'Exception.php';
-require 'PHPMailer.php';
-require 'SMTP.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 require_once('conection.php');
 if (isset($_POST['title']) && isset($_POST['start'])) {
     $nombre_cliente   = $_POST['nombre_cliente'];
@@ -37,7 +37,7 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
         $mail->setFrom('pruebasterrens@gmail.com', 'Booking System');
-        $mail->addAddress("terrensfacundocv@gmail.com");     //Add a recipient 
+        $mail->addAddress($correo);     //Add a recipient 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Comfirmar Turno';

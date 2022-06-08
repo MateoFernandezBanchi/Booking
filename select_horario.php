@@ -5,7 +5,7 @@ require_once('conection.php');
    $servicio          = $_POST['servicio'];
    $fecha             = explode(" ", $horario);
 
-   $sql               = "SELECT id, start, start_fecha, start_horas, end_horas FROM events WHERE start_fecha = '$fecha[0]'";
+   $sql               = "SELECT id, start, start_fecha, start_horas, end_horas FROM events WHERE start_fecha = '$fecha[0]' and empleado = '$empleado'";
    $events            = mysqli_query($conn, $sql);
    $i                 = 0;
    if(mysqli_num_rows($events)>0){
@@ -15,19 +15,24 @@ require_once('conection.php');
    $i++;
    }
 
-   $sql_h    = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+   $sql_h    = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado'";
    $events_h = mysqli_query($conn, $sql_h);
    $h        = 0;
-   while ($data_h = mysqli_fetch_array($events_h)) {
-   $test_h_ini[$h] = $data_h['hora_inicio'];
-   $test_h_end[$h] = $data_h['hora_final'];
-   $h++;
+
+   if(mysqli_num_rows($events_h)>0){
+      while ($data_h = mysqli_fetch_array($events_h)) {
+         $test_h_ini[$h] = $data_h['hora_inicio'];
+         $test_h_end[$h] = $data_h['hora_final'];
+         $h++;
+         }
+      
+         $resultado_inicio  = array_diff($test_h_ini, $test_start);
+         $resultado_final   = array_diff($test_h_end, $test_end);
+         $cantidad_horarios = count($test_h_ini) ;
+      }
+      $cantHor = sizeof($test_start);
    }
 
-   $resultado_inicio  = array_diff($test_h_ini, $test_start);
-   $resultado_final   = array_diff($test_h_end, $test_end);
-   $cantidad_horarios = count($test_h_ini) ;
-}
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,26 +104,69 @@ require_once('conection.php');
                   </div>
                   <div class="modal-body">
                      <div class="form-group">
-                        <h3 class="modal-title" id="myModalLabel">Seleccione el horario de su Turno:</h3>
+                        <h3 class="modal-title" id="myModalLabel">Seleccione el horario de su Turno: <?php echo $empleado?></h3>
                         <label for="color" class="col-sm-2 control-label">horario</label>
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
-                           <?php
-                              if(mysqli_num_rows($events)>0){
-                                 for($j = 0; $j <= $cantidad_horarios; $j++){
-                                    echo "<option style='color:#000;'value=".$resultado_inicio[$j]."-".$resultado_final[$j].">".$resultado_inicio[$j]."-".$resultado_final[$j]."</option>";
-                                 }
-                              }else if(mysqli_num_rows($events)<=0){
-                                 $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+                           <?php                                                                  
+                                 $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado'";
                                  $events_f = mysqli_query($conn, $sql_f);
-                                 while ($data_f = mysqli_fetch_array($events_f)) {
-                                    echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['hora_inicio']."-".$data_f['hora_final']."</option>";
-                                    }
-                              }else{
-                                 for($k = 0; $k < 10; $k++){                                       
-                                          echo "<option style='color:#000;'value='1'>1</option>";
-                                    }
-                              }
+                                 if(mysqli_num_rows($events_f) != NULL)
+                                 {
+                                    if(mysqli_num_rows($events)>0)
+                                     {
+                                        for($j = 0; $j <= $cantidad_horarios; $j++ )
+                                         {
+                                             echo "<option style='color:#000;'value=".$resultado_inicio[$j]."-".$resultado_final[$j].">".$resultado_inicio[$j]."-".$resultado_final[$j]."</option>";
+                                         }
+                                     }
+                                     else 
+                                     {                                    
+                                        while ($data_f = mysqli_fetch_array($events_f)) 
+                                          {                                 
+                                              echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['hora_inicio']."-".$data_f['hora_final']."</option>";
+                                          } 
+                                     }    
+                                 }                                     
+                                 else
+                                 {
+                                    if(mysqli_num_rows($events)>0)
+                                      {
+                                         sort($test_start);
+                                         $aux = array();
+                                         $f = 0;
+                                         for($l = 0; $l <= $cantHor; $l++ )
+                                          { 
+                                             list($n, $z1, $z2) = explode(':', $test_start[$l]);
+                                           
+                                             while($f <= $n)
+                                               {
+                                                array_push($aux, $n);
+                                                $f++;
+                                               } 
+                                             
+                                          }
+                                             for($k = 0; $k < 10; $k++)
+                                               { 
+                                                 $t = $k + 8;
+                                                 $v = $t + 1;
+                                                
+                                                  if($aux[$t] != $t)
+                                                    {   
+                                                      echo "<option style='color:#000;'value=".$t.":00:00-".$v.":00:00>".$t.":00:00-".$v.":00:00</option>";
+                                                    } 
+                                                }
+                                      }
+                                      else
+                                      {
+                                       for($k = 0; $k < 10; $k++)
+                                       {
+                                          $t = $k + 8;
+                                          $v = $t + 1;
+                                          echo "<option style='color:#000;'value=".$t.":00:00-".$v.":00:00>".$t.":00:00-".$v.":00:00</option>";
+                                       }  
+                                      }
+                                 }                        
                               ?>
                            </select>
                         </div>

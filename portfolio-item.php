@@ -1,11 +1,140 @@
-<?php
-$servicio = $_GET['servicio'];
-$empleado = $_GET['empleado'];
-$_SESSION['empleado'] = $empleado;
-$_SESSION['servicio'] = $servicio;
-
+<?php 
 require_once('conection.php');
-$sql    = "SELECT id, title, start, end, color FROM events WHERE servicio = '$servicio' AND empleado = '$empleado' AND end >= now() - INTERVAL 1 DAY";
+if (isset($_POST['empleado'])){ 
+$datos             = $_POST['empleado'];
+$general = explode("-",$datos);
+$serv             = $general[1];
+$emp = $general[0];
+$_SESSION['servicio'] = $serv;
+$_SESSION['empleado'] = $emp;
+}
+if(empty($emp)){
+    $servicio = $_GET['servicio'];
+    $consulta_cont = "SELECT * FROM contenido_paginas WHERE servicio = '$servicio'";
+    $cont          = mysqli_query($conn, $consulta_cont);
+    ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Modern Business - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href='css/fullcalendar.css' rel='stylesheet' />
+    <link rel="stylesheet" href="./css/styles2.min.css">
+    <style>
+    body {
+        padding-top: 70px;
+    }
+
+    #calendar {
+        max-width: 1000px;
+        margin-bottom: 50px;
+    }
+
+    .col-centered {
+        float: none;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+<body class="d-flex flex-column h-100" style="padding-top: 0px;">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navContainer">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/booking-main">LOGO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="link-nav dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                                <li><a class="dropdown-item" href="blog-home.html">Extraccion</a></li>
+                                <li><a class="dropdown-item" href="blog-post.html">Ortodoncia</a></li>
+                                <li><a class="dropdown-item" href="blog-post.html">Blanqueamiento</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <?php while($contenido = mysqli_fetch_array($cont)){ ?>
+        <section class="py-5">
+            <div class="container px-5">
+                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                    <div class="col-lg-6">
+                        <div class="text-center mb-5">
+                            <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
+                            <p class="lead fw-normal text-muted mb-0"><?php echo $contenido['descripcion'];?></p>
+                            <button class="btn btn-primary btnPersonal mt-5"> <a
+                                href="#turnos">Pedir turno</a> 
+                        </button>
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5"
+                        src="assets/<?php echo $contenido['imagen1'];?>" alt="..." /></div>
+                        </div>
+                </div>
+        </section>
+        <?php } ?>
+        <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Seleccione un Doctor:</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-sm-10">
+                                    <?php
+                                    if ($servicio == "extraccion"){
+                                        $sql_se = "SELECT * FROM empleados WHERE servicio = '$servicio'";
+                                        $query_se = mysqli_query($conn, $sql_se);
+                                    ?>
+                                    <select name="empleado" class="form-control" id="empleado">
+                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['nombre']?></option>
+                                            <?php } ?>
+                                    </select>
+                                    <?php } ?>
+                                    <?php
+                                    if ($servicio == "ortodoncia"){
+                                        $sql_se = "SELECT * FROM empleados WHERE servicio2 = '$servicio'";
+                                        $query_se = mysqli_query($conn, $sql_se);
+                                    ?>
+                                    <select name="empleado" class="form-control" id="empleado">
+                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio2']?>"><?php echo $datos_se['nombre']?></option>
+                                            <?php } ?>
+                                    </select>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+    <?php
+}else{
+$empleado = $_SESSION['empleado'];
+$servicio = $_SESSION['servicio'];
+$sql    = "SELECT id, title, start, end, color FROM events WHERE servicio = '$servicio' AND empleado = '$empleado' AND vacations = 1 AND end >= now() - INTERVAL 1 DAY";
 $events = mysqli_query($conn, $sql);
 
 $consulta_cont = "SELECT * FROM contenido_paginas WHERE servicio = '$servicio'";
@@ -20,8 +149,8 @@ if (mysqli_num_rows($query_vac) != 0) {
 
 $sql_dias   = ("SELECT dia_trabajo FROM dias_trabajo WHERE empleado = '$empleado'");
 $query_dias = mysqli_query($conn, $sql_dias);
-$i                 = 0;
-while ($dias = mysqli_fetch_array($query_dias)){
+$i          = 0;
+while ($dias = mysqli_fetch_array($query_dias)) {
     $dia[$i] = $dias['dia_trabajo'];
     $i++;
 }
@@ -33,6 +162,7 @@ $dia5 = $dia[4];
 $dia6 = $dia[5];
 $dia7 = $dia[6];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,7 +245,44 @@ $dia7 = $dia[6];
                         src="assets/<?php echo $contenido['imagen1'];?>" alt="..." /></div>
                         </div>
                 </div>
-                
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Seleccione un Doctor:</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-sm-10">
+                                    <?php
+                                    if ($servicio == "extraccion"){
+                                        $sql_se = "SELECT * FROM empleados WHERE servicio = '$servicio'";
+                                        $query_se = mysqli_query($conn, $sql_se);
+                                    ?>
+                                    <select name="empleado" class="form-control" id="empleado">
+                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['nombre']?></option>
+                                            <?php } ?>
+                                    </select>
+                                    <?php } ?>
+                                    <?php
+                                    if ($servicio == "ortodoncia"){
+                                        $sql_se = "SELECT * FROM empleados WHERE servicio2 = '$servicio'";
+                                        $query_se = mysqli_query($conn, $sql_se);
+                                    ?>
+                                    <select name="empleado" class="form-control" id="empleado">
+                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['nombre']?></option>
+                                            <?php } ?>
+                                    </select>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
             <div class="row gx-5">
 
@@ -125,7 +292,7 @@ $dia7 = $dia[6];
             <div class="row  mt-5 calendarContainer" >
                 <div class="col-lg-12 text-center ">
                     <h1 id="turnos">Turnos</h1>
-                    <h4 class="mb-4 mt-4">Selecciona un dia en el calendario para reservar tu turno</h4>
+                    <h4 class="mb-4 mt-4">Selecciona un dia en el calendario para reservar tu turno con <?php echo $empleado?></h4>
                     <div id="calendar" class="col-centered calendar">
                     </div>
                 </div>
@@ -285,8 +452,15 @@ $dia7 = $dia[6];
                 $end = $event['end'];
             }
             ?>
+            {
+                id: '<?php echo $event['id']; ?>',
+                title: '<?php echo $event['title']; ?>',
+                start: '<?php echo $start; ?>',
+                end: '<?php echo $end; ?>',
+                color: '<?php echo $event['color']; ?>'
 
-                <?php } ?>
+            },
+        <?php } ?>
             ]
         });
 
@@ -323,3 +497,6 @@ $dia7 = $dia[6];
 </body>
 
 </html>
+<?php
+}
+?> 
