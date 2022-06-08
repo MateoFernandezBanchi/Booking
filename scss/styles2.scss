@@ -1,6 +1,8 @@
 
 @import "./variables";
 @import "./buttons";
+@import "./calendar";
+@import "./portfolio-item";
 /* GLOBAL */
 .navContainer {
     background-color: $colorPrincipal;
@@ -13,7 +15,7 @@
         text-decoration: underline;
     }
     a {
-        color: white;
+        color: $colorTerciario;
         padding: 20px;
         text-decoration: none;
     }
@@ -41,7 +43,7 @@
 }
 
 .fc-today-button {
-    background-color: #7ADDBB;
+    background-color: $colorPrincipal;
     border-radius: 20px;
 }
 
@@ -62,8 +64,13 @@
 }
 .modal-footer {
     justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
-
+.modal-content {
+    border-radius: 20px;
+    max-width: 350px;
+}
 #descripcionServicio {
     height: 80vh;
 }
@@ -79,10 +86,10 @@
 }
 
 .formHorarios {
-    max-width: 600px;
+    max-width: 350px;
     margin: 0 auto;
-    background-color: $colorTerciario;
-    border-radius: 30px;
+    background-color: $colorCuarto;
+    border-radius: 20px;
 }
 
 /* INFORMACION PERSONAL */
@@ -90,25 +97,14 @@
 .formPersonal {
     max-width: 600px;
     margin: 0 auto;
-    background-color: rgb(3, 203, 155);
+    background-color: $colorTerciario;
     border-radius:30px ;
 }
 .headerPersonal {
-    background-color: rgb(0, 0, 0);
+    background-color: $colorPrincipal;
     color: white;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-}
-.btnPersonal {
-    background-color: black;
-    &:hover {
-        background-color: $colorTerciario;
-    }
-}
-
-.btnPersonal a {
-    color: white;
-    text-decoration: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .form-control:focus {
@@ -127,8 +123,15 @@
 }
 .modal-title {
     text-align: center;
+    font-size: 20px;
 }
-
+.modal-header h4 {
+    font-size: 20px;
+    background-color: $colorPrincipal;
+}
+// .modal-footer {
+//     background-color: $colorTerciario;
+// }
 /* CONFIRMACION */
 .containerConfirmacion {
     margin: 0 auto;
@@ -143,7 +146,12 @@
 .card-text, .card-title {
     text-align: center;
 }
-
+.card-body {
+    background-color: $colorCuarto;
+}
+.card-footer {
+    background-color: $colorCuarto;
+}
 /* FOOTER */
 footer {
     background-color: black;

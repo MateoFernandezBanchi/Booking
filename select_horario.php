@@ -59,67 +59,65 @@ require_once('conection.php');
       </style>
    </head>
    <body class="d-flex flex-column h-100" style="padding-top: 0px;">
-     
-         <!-- Navigation-->
-         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
-            <div class="container px-5">
-               <a class="navbar-brand" href="index.html">Centro Odontologico</a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                           <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                           <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                        </ul>
-                     </li>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                           <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                           <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-                        </ul>
-                     </li>
-                  </ul>
-               </div>
+      <nav class="navbar navbar-expand-lg navbar-dark navContainer">
+         <div class="container px-5">
+            <a class="navbar-brand" href="index.html">Centro Odontologico</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                  <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
+                        <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
+                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                        <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
+                     </ul>
+                  </li>
+               </ul>
             </div>
-         </nav>
-         
-         <!-- Page Content-->
-         <main class="flex-shrink-0 mainHorario">
+         </div>
+      </nav>
+      <!-- Page Content-->
+      <main class="flex-shrink-0 mainHorario">
          <section class="py-5">
             <div class="container px-5 my-5">
-            <form class="form-horizontal formHorarios calendar" method="POST" action="insert_personal_info.php">
+               <form class="form-horizontal formHorarios calendar" method="POST" action="insert_personal_info.php">
                   <div class="modal-header flex-direction-column headerPersonal">
                      <?php $show_fecha = explode(" ", $horario); ?>
                      <h4>Dia <?php echo $show_fecha[0]?></h4>
-                   
-
                   </div>
                   <div class="modal-body">
                      <div class="form-group">
-                     <h3 class="modal-title" id="myModalLabel">Seleccione el horario de su Turno:</h3>
+                        <h3 class="modal-title" id="myModalLabel">Seleccione el horario de su Turno:</h3>
                         <label for="color" class="col-sm-2 control-label">horario</label>
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
-                              <?php
+                           <?php
                               if(mysqli_num_rows($events)>0){
                                  for($j = 0; $j <= $cantidad_horarios; $j++){
                                     echo "<option style='color:#000;'value=".$resultado_inicio[$j]."-".$resultado_final[$j].">".$resultado_inicio[$j]."-".$resultado_final[$j]."</option>";
                                  }
+                              }else if(mysqli_num_rows($events)<=0){
+                                 $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+                                 $events_f = mysqli_query($conn, $sql_f);
+                                 while ($data_f = mysqli_fetch_array($events_f)) {
+                                    echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['hora_inicio']."-".$data_f['hora_final']."</option>";
+                                    }
                               }else{
-                                 echo "<option style='color:#000;'value='08:00:00-09:00:00'>08:00:00-09:00:00</option>";
-                                 echo "<option style='color:#000;'value='09:00:00-10:00:00'>09:00:00-10:00:00</option>";
-                                 echo "<option style='color:#000;'value='10:00:00-11:00:00'>10:00:00-11:00:00</option>";
-                                 echo "<option style='color:#000;'value='11:00:00-12:00:00'>11:00:00-12:00:00</option>";
-                                 echo "<option style='color:#000;'value='12:00:00-13:00:00'>12:00:00-13:00:00</option>";
-                                 echo "<option style='color:#000;'value='13:00:00-14:00:00'>13:00:00-14:00:00</option>";
-                                 echo "<option style='color:#000;'value='14:00:00-15:00:00'>14:00:00-15:00:00</option>";
-                                 echo "<option style='color:#000;'value='15:00:00-16:00:00'>15:00:00-16:00:00</option>";
-                                 echo "<option style='color:#000;'value='16:00:00-17:00:00'>16:00:00-17:00:00</option>";
-                                 echo "<option style='color:#000;'value='17:00:00-18:00:00'>17:00:00-18:00:00</option>";
+                                 for($k = 0; $k < 10; $k++){                                       
+                                          echo "<option style='color:#000;'value='1'>1</option>";
+                                    }
                               }
                               ?>
                            </select>
@@ -128,28 +126,26 @@ require_once('conection.php');
                      <div class="form-group" >
                         <!-- <label for="start" class="col-sm-2 control-label">Para el dia:</label> -->
                         <div class="col-sm-10">
-                           
-                         
                            <input style="display: none;" type="text" name="start" class="form-control" id="start" value="<?php echo $horario;?>" readonly>
                         </div>
                      </div>
                      <div class="form-group" style="display: none;">
-                                 <div class="col-sm-10">
-                                    <input type="text" name="empleado" class="form-control" id="title" placeholder="Titulo" value="<?php echo $empleado?>">
-                                 </div>
-                              </div>
-                              <div class="form-group" style="display: none;">
-                                 <div class="col-sm-10">
-                                    <input type="text" name="servicio" class="form-control" id="title" placeholder="Titulo" value="<?php echo $servicio?>">
-                                 </div>
-                              </div>
+                        <div class="col-sm-10">
+                           <input type="text" name="empleado" class="form-control" id="title" placeholder="Titulo" value="<?php echo $empleado?>">
+                        </div>
+                     </div>
+                     <div class="form-group" style="display: none;">
+                        <div class="col-sm-10">
+                           <input type="text" name="servicio" class="form-control" id="title" placeholder="Titulo" value="<?php echo $servicio?>">
+                        </div>
+                     </div>
                   </div>
                   <div class="modal-footer">
                      <button class="btn btn-primary btnPersonal"> <a href="portfolio-item.php?servicio=<?php echo $servicio?>&empleado=<?php echo $empleado?>">Volver</a> </button>
                      <button type="submit" class="btn btn-primary btnPersonal">Siguiente</button>
                   </div>
                </form>
-                     </div>
+            </div>
             </div>
          </section>
       </main>
@@ -188,6 +184,8 @@ require_once('conection.php');
       <script src='js/fullcalendar/locale/es.js'></script>
    </body>
 </html>
+
+
 
 
 

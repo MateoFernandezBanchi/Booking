@@ -18,14 +18,20 @@ if (mysqli_num_rows($query_vac) != 0) {
     $fechas = mysqli_fetch_array($query_vac);
 }
 
-$sql_dias   = ("SELECT dias_trabajo FROM empleados WHERE nombre = '$empleado'");
+$sql_dias   = ("SELECT dia_trabajo FROM dias_trabajo WHERE empleado = '$empleado'");
 $query_dias = mysqli_query($conn, $sql_dias);
-$dias       = mysqli_fetch_array($query_dias);
-
-$dias_laborales = $dias['dias_trabajo'];
-$array_dias     = explode("-", $dias_laborales);
-
-
+$i                 = 0;
+while ($dias = mysqli_fetch_array($query_dias)){
+    $dia[$i] = $dias['dia_trabajo'];
+    $i++;
+}
+$dia1 = $dia[0];
+$dia2 = $dia[1];
+$dia3 = $dia[2];
+$dia4 = $dia[3];
+$dia5 = $dia[4];
+$dia6 = $dia[5];
+$dia7 = $dia[6];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,15 +76,14 @@ $array_dias     = explode("-", $dias_laborales);
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="/booking-main">LOGO</a>
+                <a class="navbar-brand" href="/booking-main2">LOGO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="link-nav" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="link-nav" href="index.html">Services</a></li>
+                        <li class="link-nav"><a href="categories.php">Categories</a></li>
                         <li class="nav-item dropdown">
                             <a class="link-nav dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Services</a>
@@ -96,7 +101,7 @@ $array_dias     = explode("-", $dias_laborales);
         <?php while($contenido = mysqli_fetch_array($cont)){ ?>
         <section class="py-5">
             <div class="container px-5">
-                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center servicioHero">
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
@@ -108,7 +113,7 @@ $array_dias     = explode("-", $dias_laborales);
                         
                     </div>
                     <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5"
-                        src="assets/<?php echo $contenido['imagen1'];?>" alt="..." /></div>
+                        src="<?php echo $contenido['imagen2'];?>" alt="..." /></div>
                         </div>
                 </div>
                 
@@ -130,7 +135,7 @@ $array_dias     = explode("-", $dias_laborales);
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="select_horario.php">
-                            <div class="modal-header">
+                            <div class="modal-header headerPersonal">
                                 <h4 class="modal-title" id="myModalLabel">Estas a punto de pedir un Turno:</h4>
                             </div>
                             <div class="modal-body">
@@ -156,7 +161,7 @@ $array_dias     = explode("-", $dias_laborales);
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                                <button type="submit" class="btn button1">Siguiente</button>
                             </div>
                         </form>
                     </div>
@@ -200,6 +205,13 @@ $array_dias     = explode("-", $dias_laborales);
     <script src='js/fullcalendar/fullcalendar.js'></script>
     <script src='js/fullcalendar/locale/es.js'></script>
     <script>
+        var a = <?php echo $dia1;?>;
+        var b = <?php echo $dia2;?>;
+        var c = <?php echo $dia3;?>;
+        var d = <?php echo $dia4;?>;
+        var e = <?php echo $dia5;?>;
+        var f = <?php echo $dia6;?>;
+        var g = <?php echo $dia7;?>;
     $(document).ready(function() {
         var date = new Date();
         var yyyy = date.getFullYear().toString();
@@ -225,7 +237,7 @@ $array_dias     = explode("-", $dias_laborales);
             maxTime: '19:00:00',
             Boolean,
             default: true,
-            hiddenDays: [0],
+            hiddenDays: [a,b,c,d,e,f,g],
             select: (start, end) => {
                 var fecha1 = '<?php echo $fechas['start']; ?>';
                 var fecha2 = '<?php echo $fechas['end']; ?>';

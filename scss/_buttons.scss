@@ -3,7 +3,19 @@
     color: white;
     text-decoration: none;
     &:hover {
-        background-color: grey;
+        background-color: $colorTerciario;
         color: white;
     }
+}
+
+.btnPersonal {
+    background-color: $colorPrincipal;
+    &:hover {
+        background-color: $colorTerciario;
+    }
+}
+
+.btnPersonal a {
+    color: white;
+    text-decoration: none;
 }

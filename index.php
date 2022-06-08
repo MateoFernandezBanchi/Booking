@@ -1,3 +1,11 @@
+<?php
+
+require_once('conection.php');
+$consulta_cont = "SELECT * FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
+$cont          = mysqli_query($conn, $consulta_cont);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +22,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles2.min.css">
+    <link rel="stylesheet" href="./css/test.php">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -21,7 +30,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.html">LOGO</a>
+                <a class="navbar-brand" href="index.php">LOGO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
@@ -46,13 +55,13 @@
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-6 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
+                            <h1 class="display-5 fw-bolder text-white mb-2 test">Main Title</h1>
                             <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis exercitationem perferendis aliquam, sit possimus error?
 
                             </p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Nuestros Servicios</a>
+                                <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Categories</a>
                             </div>
                         </div>
                     </div>
@@ -96,99 +105,23 @@
                     </div>
                 </div>
                 <div class="row gx-5">
+                <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
-                        <a href="portfolio-item.php?servicio=extraccion&empleado=Kelly#descripcionServicio"
-                            style="text-decoration: none; color: #000">
                             <div class="card h-100 shadow border-0">
                                 <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
-                                    <h5 class="card-title mb-3">Category 1</h5>
-                        </a>
-                        <p class="card-text mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem optio explicabo facilis</p>
-                    </div>
-                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                        <!-- <div class="d-flex align-items-end justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle me-3" src="assets/doctor2.jpg" alt="..." />
-                                <div class="small">
-                                    <div class="fw-bold">Doctora Kelly Rowan</div>
+                                    <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
+                                    <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
                                 </div>
+                                <div class="card-footer p-4 pt-0 border-top-0">
+                                    <div class="d-flex justify-content-center mb-5">
+                                        <button class="btn btnPersonal"><a href="categories.php?servicio=seccion&tipo=<?php echo $row['tipo_servicio']?>">See more</a></button>
+                                    </div>
+                                </div> 
                             </div>
-                        </div> -->
-                        <div class="d-flex justify-content-center mb-5">
-                        <button class="btn btnPersonal"> <a
-                                href="portfolio-item.php?servicio=extraccion&empleado=Kelly#turnos">See more</a>
-                        </button>
                     </div>
-                    </div> 
-                  
-                </div>
-            </div>
-            </a>
-            <div class="col-lg-4 mb-5 cardServicio">
-                <a href="portfolio-item.php?servicio=ortodoncia&empleado=Josiah#descripcionServicio"
-                    style="text-decoration: none; color: #000">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
-                            <h5 class="card-title mb-3">Category 2</h5>
-                </a>
-                <p class="card-text mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem optio explicabo facilis</p>
-            </div>
-            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                <!-- <div class="d-flex align-items-end justify-content-between">
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle me-3" src="assets/doctor1.jpg" alt="..." />
-                        <div class="small">
-                            <div class="fw-bold">Doctor Josiah Barclay</div>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="d-flex justify-content-center mb-5">
-                <button class="btn  btnPersonal"> <a
-                        href="portfolio-item.php?servicio=ortodoncia&empleado=Josiah">See more</a> </button>
-            </div>
-            </div>
-            
-            </div>
-            </a>
-            </div>
-            <div class="col-lg-4 mb-5 cardServicio">
-                <a href="portfolio-item.php?servicio=blanqueamiento&empleado=Evelyn#descripcionServicio"
-                    style="text-decoration: none; color: #000">
-                <div class="card h-100 shadow border-0">
-                    <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
-                    <div class="card-body p-4">
-                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
-                        <h5 class="card-title mb-3">Category 3</h5>
-                        </a>
-                        <p class="card-text mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem optio explicabo facilis</p>
-                    </div>
-                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                        <!-- <div class="d-flex align-items-end justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle me-3" src="assets/doctor3.jpg" alt="..." />
-                                <div class="small">
-                                    <div class="fw-bold">Doctora Evelyn Martinez</div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="d-flex justify-content-center mb-5">
-                        <button class="btn  btnPersonal"> <a
-                                href="portfolio-item.php?servicio=blanqueamiento&empleado=Evelyn">See more</a>
-                        </button>
-                    </div>
-                    </div>
-                  
-                </div>
-                <!-- </a> -->
-            </div>
-            </div>
-
-            <!-- Call to action-->
-            </div>
+            <?php } ?>
         </section>
     </main>
     <!-- Footer-->
