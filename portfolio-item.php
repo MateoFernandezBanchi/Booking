@@ -76,13 +76,14 @@ $dia7 = $dia[6];
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="/booking-main">LOGO</a>
+                <a class="navbar-brand" href="/booking-main2">LOGO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="link-nav"><a href="categories.php">Categories</a></li>
                         <li class="nav-item dropdown">
                             <a class="link-nav dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Services</a>
@@ -100,7 +101,7 @@ $dia7 = $dia[6];
         <?php while($contenido = mysqli_fetch_array($cont)){ ?>
         <section class="py-5">
             <div class="container px-5">
-                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center servicioHero">
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
@@ -112,7 +113,7 @@ $dia7 = $dia[6];
                         
                     </div>
                     <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5"
-                        src="assets/<?php echo $contenido['imagen1'];?>" alt="..." /></div>
+                        src="<?php echo $contenido['imagen2'];?>" alt="..." /></div>
                         </div>
                 </div>
                 
@@ -134,7 +135,7 @@ $dia7 = $dia[6];
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="select_horario.php">
-                            <div class="modal-header">
+                            <div class="modal-header headerPersonal">
                                 <h4 class="modal-title" id="myModalLabel">Estas a punto de pedir un Turno:</h4>
                             </div>
                             <div class="modal-body">
@@ -160,7 +161,7 @@ $dia7 = $dia[6];
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                                <button type="submit" class="btn button1">Siguiente</button>
                             </div>
                         </form>
                     </div>

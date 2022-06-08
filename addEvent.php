@@ -34,18 +34,19 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
         $mail->Username   = 'confirmarturno@gmail.com';                     //SMTP username
         $mail->Password   = 'ouzdggknolwjphzi';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Port       = 443;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
         $mail->setFrom('pruebasterrens@gmail.com', 'Booking System');
-        $mail->addAddress("terrensfacundocv@gmail.com");     //Add a recipient 
+        $mail->addAddress($correo);     //Add a recipient 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Comfirmar Turno';
-        $mail->Body    = 'http://localhost/booking/confirmar_turno.php?email='.$correo.'&hash='.$hash.'';
+        $mail->Body    = 'http://localhost/booking-main2/confirmar_turno.php?email='.$correo.'&hash='.$hash.'';
         $mail->send();
     } catch (Exception $e) {
         echo "error: {$mail->ErrorInfo}";
     }
 }
+exit;
 header('Location: confirm.php');
-?> 
+?>

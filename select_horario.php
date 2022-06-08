@@ -59,7 +59,7 @@ require_once('conection.php');
       </style>
    </head>
    <body class="d-flex flex-column h-100" style="padding-top: 0px;">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark navContainer">
          <div class="container px-5">
             <a class="navbar-brand" href="index.html">Centro Odontologico</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -150,7 +150,7 @@ require_once('conection.php');
          </section>
       </main>
       <!-- Footer-->
-      <footer class="bg-dark py-4 mt-auto">
+      <footer class="py-4 mt-auto">
          <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                <div class="col-auto">
