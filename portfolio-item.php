@@ -1,10 +1,17 @@
 <?php
 $servicio = $_GET['servicio'];
 $empleado = $_GET['empleado'];
+
 $_SESSION['empleado'] = $empleado;
 $_SESSION['servicio'] = $servicio;
-
+if (!isset($_GET['turno_n'])) {
+    null;
+} else {
+    $no_disponible=$_GET['turno_n'];
+    echo "<script>alert('No hay turnos disponibles para este empleado')</script>";
+}
 require_once('conection.php');
+
 $sql    = "SELECT id, title, start, end, color FROM events WHERE servicio = '$servicio' AND empleado = '$empleado' AND end >= now() - INTERVAL 1 DAY";
 $events = mysqli_query($conn, $sql);
 
@@ -41,7 +48,7 @@ $dia7 = $dia[6];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Booking</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->

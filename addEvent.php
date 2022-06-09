@@ -1,12 +1,9 @@
 <?php
-<<<<<<< HEAD
-=======
-use PHPMailer\PHPMailer\PHPMailer;
+/*use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'Exception.php';
 require 'PHPMailer.php';
-require 'SMTP.php';
->>>>>>> facuRama
+require 'SMTP.php';*/
 require_once('conection.php');
 if (isset($_POST['title']) && isset($_POST['start'])) {
     $nombre_cliente   = $_POST['nombre_cliente'];
@@ -18,10 +15,7 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
     $servicio         = $_POST['servicio'];
     $start            = $_POST['start'];
     $variable_horario = $_POST['horario'];
-<<<<<<< HEAD
-=======
     $hash = md5( rand(0,1000) );
->>>>>>> facuRama
     is_string($start);
     $horarios         = explode("-", $variable_horario);
     $new_start        = explode(" ", $start);
@@ -31,7 +25,7 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
     $sql              = "INSERT INTO events(title, nombre_cliente, start, end, start_fecha, start_horas, end_horas, correo_cliente, numero_telefono, comentario, empleado, servicio , confirm, token_confirm) 
                                     values ('$title', '$nombre_cliente', '$horario_inicio', '$horario_final', '$new_start[0]', '$horarios[0]', '$horarios[1]', '$correo', '$telefono', '$cometario', '$empleado', '$servicio', '0', '$hash')";
     mysqli_query($conn, $sql);
-    $mail = new PHPMailer(true);
+  /*  $mail = new PHPMailer(true);
     try {
         //Server settings
         $mail->isSMTP();                                            //Send using SMTP
@@ -51,8 +45,8 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
         $mail->send();
     } catch (Exception $e) {
         echo "error: {$mail->ErrorInfo}";
-    }
+    } */
 }
-exit;
+
 header('Location: confirm.php');
 ?>

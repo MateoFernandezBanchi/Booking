@@ -24,9 +24,42 @@ require_once('conection.php');
    $h++;
    }
 
-   $resultado_inicio  = array_diff($test_h_ini, $test_start);
-   $resultado_final   = array_diff($test_h_end, $test_end);
-   $cantidad_horarios = count($test_h_ini) ;
+   if(mysqli_num_rows($events_h)>0)
+   {
+      while ($data_h = mysqli_fetch_array($events_h)) 
+      {
+      $test_h_ini[$h] = $data_h['hora_inicio'];
+      $test_h_end[$h] = $data_h['hora_final'];
+      
+      $h++;
+      }
+   
+         $resultado_inicio  = array_diff($test_h_ini, $test_start);   
+         $resultado_final   = array_diff($test_h_end, $test_end);
+         $cantidad_horarios = count($test_h_ini);
+   }
+  
+   $cantHor = sizeof($test_start); 
+   $mensajeCalendario = "";
+
+    if(mysqli_num_rows($events_h) != NULL)
+   {
+      if($resultado_inicio == NULL)
+      {
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=extraccion&empleado=Kelly");
+        echo "no hay turnos disponibles primer if";
+      }
+            
+   } 
+   else
+   {
+     if($cantHor == 10)
+     {
+      // header("portfolio-item.php?turno_n=no_disponible");
+      echo "no hay turnos disponibles segundoif";
+     }
+     
+   }
 }
 ?> 
 <!DOCTYPE html>
@@ -104,20 +137,63 @@ require_once('conection.php');
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
                            <?php
-                              if(mysqli_num_rows($events)>0){
-                                 for($j = 0; $j <= $cantidad_horarios; $j++){
-                                    echo "<option style='color:#000;'value=".$resultado_inicio[$j]."-".$resultado_final[$j].">".$resultado_inicio[$j]."-".$resultado_final[$j]."</option>";
-                                 }
-                              }else if(mysqli_num_rows($events)<=0){
-                                 $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
-                                 $events_f = mysqli_query($conn, $sql_f);
-                                 while ($data_f = mysqli_fetch_array($events_f)) {
-                                    echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['hora_inicio']."-".$data_f['hora_final']."</option>";
-                                    }
-                              }else{
-                                 for($k = 0; $k < 10; $k++){                                       
-                                          echo "<option style='color:#000;'value='1'>1</option>";
-                                    }
+                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+                              $events_f = mysqli_query($conn, $sql_f);
+                              if(mysqli_num_rows($events_f) != NULL)
+                              {
+                                 if(mysqli_num_rows($events)>0)
+                                  {
+                                     for($j = 0; $j <= $cantidad_horarios; $j++ )
+                                      {
+                                          echo "<option style='color:#000;'value=".$resultado_inicio[$j]."-".$resultado_final[$j].">".$resultado_inicio[$j]."-".$resultado_final[$j]."</option>";
+                                      }
+                                  }
+                                  else 
+                                  {                                    
+                                     while ($data_f = mysqli_fetch_array($events_f)) 
+                                       {                                 
+                                           echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['hora_inicio']."-".$data_f['hora_final']."</option>";
+                                       } 
+                                  }    
+                              }                                     
+                              else
+                              {
+                                 if(mysqli_num_rows($events)>0)
+                                   {
+                                      sort($test_start);
+                                      $aux = array();
+                                      $f = 0;
+                                      for($l = 0; $l <= $cantHor; $l++ )
+                                       { 
+                                          list($n, $z1, $z2) = explode(':', $test_start[$l]);
+                                        
+                                          while($f <= $n)
+                                            {
+                                             array_push($aux, $n);
+                                             $f++;
+                                            } 
+                                          
+                                       }
+                                          for($k = 0; $k < 10; $k++)
+                                            { 
+                                              $t = $k + 8;
+                                              $v = $t + 1;
+                                             
+                                               if($aux[$t] != $t)
+                                                 {   
+                                                   echo "<option style='color:#000;'value=".$t.":00:00-".$v.":00:00>".$t.":00:00-".$v.":00:00</option>";
+                                                 } 
+                                             }
+                                   }
+                                   else
+                                   {
+                                    for($k = 0; $k < 10; $k++)
+                                    {
+                                       $t = $k + 8;
+                                       $v = $t + 1;
+                                       echo "<option style='color:#000;'value=".$t.":00:00-".$v.":00:00>".$t.":00:00-".$v.":00:00</option>";
+                                    }  
+                                   }
                               }
                               ?>
                            </select>

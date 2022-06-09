@@ -54,8 +54,8 @@ $cont          = mysqli_query($conn, $consulta_cont);
         <header class="py-5 headerIndex">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
-                    <div class="col-lg-8 col-xl-6 col-xxl-6">
-                        <div class="my-5 text-center text-xl-start">
+                    <div class="col-lg-8 col-xl-6 col-xxl-6 heroContainer">
+                        <div class="my-5 text-center text-xl-start ">
                             <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
                             <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt
@@ -119,7 +119,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
             </div>
         </div> -->
         <!-- Blog preview section-->
-        <section class="py-5" id="servicios">
+        <section class="py-5 mainContainer" id="servicios">
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
