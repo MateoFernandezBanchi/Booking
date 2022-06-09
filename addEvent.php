@@ -1,9 +1,9 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'Exception.php';
-require 'PHPMailer.php';
-require 'SMTP.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 require_once('conection.php');
 if (isset($_POST['title']) && isset($_POST['start'])) {
     $nombre_cliente   = $_POST['nombre_cliente'];
