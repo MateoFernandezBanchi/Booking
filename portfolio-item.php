@@ -21,10 +21,6 @@ if(empty($emp)){
     ?>
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-=======
->>>>>>> 856bebd95ff5e06f424d6c24f87418a8faaaa59d
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
