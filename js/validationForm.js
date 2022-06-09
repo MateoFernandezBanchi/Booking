@@ -55,20 +55,11 @@ function validarFormulario (e) {
         }
     }
     if (e.target.type === 'tel') {
-        // console.log(e.target.value);
-        // const letras="abcdefghyjklmnñopqrstuvwxyz";
-        // if (e.target.value.includes(letras)) {
-        //     console.log('no es un numero');
-        // } else {
-        //     console.log('es un numero')
-        // }
-    
         if (regexPhone.test(e.target.value)) {
             const error = document.querySelector('p.errorMessage');
             if (error){
                 error.remove();
             };
-            
     
             e.target.classList.remove('is-invalid');
             e.target.classList.add('is-valid', 'valid');
@@ -77,7 +68,6 @@ function validarFormulario (e) {
             e.target.classList.add('is-invalid');
             showError ('El telefono no es valido');
             btnSubmit.disabled = true;
-
         }
     }
     if (er.test(email.value) && telefono.value !=='' && nombre.value !=='') {
