@@ -1,5 +1,11 @@
 <?php 
 require_once('conection.php');
+if (!isset($_GET['turno_n'])) {
+    null;
+} else {
+    $no_disponible=$_GET['turno_n'];
+    echo "<script>alert('No hay turnos disponibles para este empleado')</script>";
+}
 if (isset($_POST['empleado'])){ 
 $datos             = $_POST['empleado'];
 $general = explode("-",$datos);
@@ -15,7 +21,6 @@ if(empty($emp)){
     ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -162,10 +167,8 @@ $dia5 = $dia[4];
 $dia6 = $dia[5];
 $dia7 = $dia[6];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -421,22 +424,6 @@ $dia7 = $dia[6];
                     $('#ModalAdd').modal('show');
                 }
             },
-            eventRender: function(event, element) {
-                element.bind('dblclick', function() {
-                    $('#ModalEdit #id').val(event.id);
-                    $('#ModalEdit #title').val(event.title);
-                    $('#ModalEdit #color').val(event.color);
-                    $('#ModalEdit #empleado').val(event.empleado);
-                    $('#ModalEdit').modal('show');
-                });
-            },
-            eventDrop: function(event, delta, revertFunc) { // si changement de position
-                edit(event);
-            },
-            eventResize: function(event, dayDelta, minuteDelta,
-            revertFunc) { // si changement de longueur
-                edit(event);
-            },
             events: [
                 <?php while($event = mysqli_fetch_array($events)){
             $start = explode(" ", $event['start']);
@@ -463,40 +450,10 @@ $dia7 = $dia[6];
         <?php } ?>
             ]
         });
-
-        function edit(event) {
-            start = event.start.format('YYYY-MM-DD HH:mm:ss');
-            if (event.end) {
-                end = event.end.format('YYYY-MM-DD HH:mm:ss');
-            } else {
-                end = start;
-            }
-            id = event.id;
-            Event = [];
-            Event[0] = id;
-            Event[1] = start;
-            Event[2] = end;
-            $.ajax({
-                url: 'editEventDate.php',
-                type: "POST",
-                data: {
-                    Event: Event
-                },
-                success: function(rep) {
-                    if (rep == 'OK') {
-                        alert('Evento se ha guardado correctamente');
-                    } else {
-                        alert('No se pudo guardar. Inténtalo de nuevo.');
-                    }
-                }
-            });
-        }
-
     });
-    </script>
+</script>
 </body>
-
 </html>
 <?php
-}
+}   
 ?> 
