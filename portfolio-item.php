@@ -4,7 +4,14 @@ if (!isset($_GET['turno_n'])) {
     null;
 } else {
     $no_disponible=$_GET['turno_n'];
-    echo "<script>alert('No hay turnos disponibles para este empleado')</script>";
+    echo "
+    <div class='card' style='width: 18rem;'>
+        <div class='card-body mensajeTurno'>
+            <h5 class='card-title'>No hay turnos disponibles</h5>
+            <p class='card-text'>Por favor busque otro profesional u otro dia</p>
+            <button class='btn btn-primary btnConfirm' id='btnDenied'>Aceptar</button>
+        </div>
+    </div>";
 }
 if (isset($_POST['empleado'])){ 
 $datos             = $_POST['empleado'];
@@ -111,7 +118,7 @@ if(empty($emp)){
             <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
-                            <div class="modal-header">
+                            <div class="modal-header header_SelectDoctor">
                                 <h4 class="modal-title" id="myModalLabel">Seleccione un Doctor:</h4>
                             </div>
                             <div class="modal-body">
@@ -146,7 +153,13 @@ if(empty($emp)){
                         </form>
                     </div>
                 </div>
-
+<script>
+    const btnDenied = document.getElementById('btnDenied');
+    btnDenied.addEventListener('click', toggle);
+    function toggle() {
+        btnDenied.parentNode.classList.add('toggle');
+    }
+</script>
                 <?php
 }else{
 $empleado = $_SESSION['empleado'];
@@ -265,7 +278,7 @@ $dia7 = $dia[6];
                     <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
-                            <div class="modal-header">
+                            <div class="modal-header header_SelectDoctor">
                                 <h4 class="modal-title" id="myModalLabel">Seleccione un Doctor:</h4>
                             </div>
                             <div class="modal-body">
@@ -503,6 +516,11 @@ $dia7 = $dia[6];
         }
 
     });
+    const btnDenied = document.getElementById('btnDenied');
+    btnDenied.addEventListener('click', toggle);
+    function toggle() {
+        btnDenied.classList.add('toggle');
+    }
     </script>
 </body>
 

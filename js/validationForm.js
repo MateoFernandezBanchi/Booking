@@ -26,7 +26,7 @@ function validarFormulario (e) {
         };
 
         e.target.classList.remove('is-invalid');
-        e.target.classList.add('is-valid');
+        e.target.classList.add('is-valid', 'valid');
 
     } else {
         e.target.classList.remove('is-valid');
@@ -44,10 +44,10 @@ function validarFormulario (e) {
             };
             
     
+            e.target.classList.add('is-valid', 'valid');
             e.target.classList.remove('is-invalid');
-            e.target.classList.add('is-valid');
         } else {
-            e.target.classList.remove('is-valid');
+            e.target.classList.remove('is-valid', 'valid');
             e.target.classList.add('is-invalid');
             showError ('El email no es valido');
             btnSubmit.disabled = true;
@@ -71,7 +71,7 @@ function validarFormulario (e) {
             
     
             e.target.classList.remove('is-invalid');
-            e.target.classList.add('is-valid');
+            e.target.classList.add('is-valid', 'valid');
         } else {
             e.target.classList.remove('is-valid');
             e.target.classList.add('is-invalid');
