@@ -66,9 +66,9 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Confirmacion</h5>
-                        <p class="card-text">¡Turno confirmado!</p>
-                        <p class="card-text">Por favor revisa tu email.</p>
-                        <a href="/booking" class="btn btn-primary btnConfirm">Volver al inicio</a>
+                        <p class="card-text">¡Recibimos su solicitud!</p>
+                        <p class="card-text">Por favor revisa tu email para confirmar el turno.</p>
+                        <a href="/booking-main2" class="btn btn-primary btnConfirm">Volver al inicio</a>
                     </div>
                 </div>
             </div>

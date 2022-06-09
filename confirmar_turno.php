@@ -50,7 +50,6 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !
                             <div class="card-body">
                                 <h5 class="card-title">Confirmacion</h5>
                                 <p class="card-text">¡Turno confirmado!</p>
-                                <p class="card-text">Por favor revisa tu email.</p>
                                 <a href="/booking" class="btn btn-primary btnConfirm">Volver al inicio</a>
                             </div>
                         </div>
@@ -72,6 +71,6 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !
     }
 }else{
     // Intento nó válido (ya sea porque se ingresa sin tener el hash o porque la cuenta ya ha sido registrada)
-    echo '<div class="statusmsg">Intento inválido, por favor revisa el mensaje que enviamos correo electrónico</div>';
+    echo '<div class="statusmsg">Intento inválido, por favor revisa el mensaje que enviamos a su correo electrónico</div>';
 }
 ?>

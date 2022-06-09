@@ -22,12 +22,12 @@ body .fc { /* extra precedence to overcome jqui */
 /* Colors
 --------------------------------------------------------------------------------------------------*/
 
-.fc-unthemed th{
+/* .fc-unthemed th{
 
 	 color: #fff;
   background-color: #8edcb9;
 
-}
+} */
 
 .fc-unthemed th,
 .fc-unthemed td,

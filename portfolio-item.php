@@ -26,7 +26,7 @@ if(empty($emp)){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Booking</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -52,17 +52,22 @@ if(empty($emp)){
     </style>
 </head>
 <body class="d-flex flex-column h-100" style="padding-top: 0px;">
+    <input type="text" style="display: none;" data-from-1="<?php echo $array_dias[0]?>"
+        data-from-2="<?php echo $array_dias[1]?>" data-from-3="<?php echo $array_dias[2]?>" id="dias_laborales">
+    <input type="text" style="display: none;" data-from="<?php echo $fechas['start']?>"
+        data-to="<?php echo $fechas['end']?>" id="fecha_vac">
     <main class="flex-shrink-0">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="/booking-main">LOGO</a>
+                <a class="navbar-brand" href="/booking-main2">LOGO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="link-nav"><a href="categories.php">Categories</a></li>
                         <li class="nav-item dropdown">
                             <a class="link-nav dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Services</a>
@@ -79,7 +84,7 @@ if(empty($emp)){
         <?php while($contenido = mysqli_fetch_array($cont)){ ?>
         <section class="py-5">
             <div class="container px-5">
-                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center servicioHero">
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
@@ -91,12 +96,18 @@ if(empty($emp)){
                         
                     </div>
                     <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5"
-                        src="assets/<?php echo $contenido['imagen1'];?>" alt="..." /></div>
+                        src="<?php echo $contenido['imagen2'];?>" alt="..." /></div>
                         </div>
                 </div>
-        </section>
-        <?php } ?>
-        <div class="modal-dialog" role="document">
+                
+
+            <div class="row gx-5">
+
+                 <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div>  -->
+            </div>
+            </section>
+            <?php }?>
+            <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
                             <div class="modal-header">
@@ -135,7 +146,7 @@ if(empty($emp)){
                     </div>
                 </div>
 
-    <?php
+                <?php
 }else{
 $empleado = $_SESSION['empleado'];
 $servicio = $_SESSION['servicio'];
@@ -174,7 +185,7 @@ $dia7 = $dia[6];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Booking</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -209,13 +220,14 @@ $dia7 = $dia[6];
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="/booking-main">LOGO</a>
+                <a class="navbar-brand" href="/booking-main2">LOGO</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="link-nav"><a href="categories.php">Categories</a></li>
                         <li class="nav-item dropdown">
                             <a class="link-nav dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Services</a>
@@ -233,7 +245,7 @@ $dia7 = $dia[6];
         <?php while($contenido = mysqli_fetch_array($cont)){ ?>
         <section class="py-5">
             <div class="container px-5">
-                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center servicioHero">
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
@@ -245,10 +257,10 @@ $dia7 = $dia[6];
                         
                     </div>
                     <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5"
-                        src="assets/<?php echo $contenido['imagen1'];?>" alt="..." /></div>
+                        src="<?php echo $contenido['imagen2'];?>" alt="..." /></div>
                         </div>
-                </div>
-                <div class="modal-dialog" role="document">
+                    </div>
+                    <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
                             <div class="modal-header">
@@ -289,7 +301,7 @@ $dia7 = $dia[6];
 
             <div class="row gx-5">
 
-                <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div> -->
+                 <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div> -->
             </div>
             <?php }?>
             <div class="row  mt-5 calendarContainer" >
@@ -304,7 +316,7 @@ $dia7 = $dia[6];
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <form class="form-horizontal" method="POST" action="select_horario.php">
-                            <div class="modal-header">
+                            <div class="modal-header headerPersonal">
                                 <h4 class="modal-title" id="myModalLabel">Estas a punto de pedir un Turno:</h4>
                             </div>
                             <div class="modal-body">
@@ -330,7 +342,7 @@ $dia7 = $dia[6];
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Siguiente</button>
+                                <button type="submit" class="btn button1">Siguiente</button>
                             </div>
                         </form>
                     </div>
@@ -457,7 +469,8 @@ $dia7 = $dia[6];
     });
 </script>
 </body>
+
 </html>
 <?php
-}   
-?> 
+}
+?>

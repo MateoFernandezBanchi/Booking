@@ -55,7 +55,7 @@ require_once('conection.php');
    {
      if($cantHor == 10)
      {
-      header("location:portfolio-item.php?turno_n=no_disponible&servicio=extraccion&empleado=Kelly");
+      // header("portfolio-item.php?turno_n=no_disponible");
       echo "no hay turnos disponibles segundoif";
      }
      
@@ -137,7 +137,7 @@ require_once('conection.php');
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
                            <?php
-                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado'";
+                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
                               $events_f = mysqli_query($conn, $sql_f);
                               if(mysqli_num_rows($events_f) != NULL)
                               {
