@@ -151,3 +151,13 @@
 footer {
     background-color: black;
 }
+
+// VALIDACION FORM
+
+.errorMessage {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

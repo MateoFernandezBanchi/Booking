@@ -74,7 +74,7 @@ $servicio             = $_POST['servicio'];
         <!-- Page Content-->
         <section class="py-5">
             <div class="container px-5 containerPersonal">
-                <form class="form-horizontal formPersonal calendar" method="POST" action="addEvent.php">
+                <form class="form-horizontal formPersonal calendar" method="POST" action="addEvent.php" id="formPersonal">
                     <div class="modal-header headerPersonal">
                         <h4 class="modal-title" id="myModalLabel">Estas a punto de pedir un Turno:</h4>
                     </div>
@@ -99,7 +99,7 @@ $servicio             = $_POST['servicio'];
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">Nombre</label>
                             <div class="col-sm-10">
-                                <input type="text" name="nombre_cliente" class="form-control" id="title"
+                                <input type="text" name="nombre_cliente" class="form-control" id="nombre"
                                     placeholder="Titulo">
                             </div>
                         </div>
@@ -112,21 +112,21 @@ $servicio             = $_POST['servicio'];
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">Correo Electronico</label>
                             <div class="col-sm-10">
-                                <input type="text" name="correo" class="form-control" id="title"
+                                <input type="email" name="correo" class="form-control" id="correo"
                                     placeholder="Correo Electronico">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">Telefono</label>
                             <div class="col-sm-10">
-                                <input type="text" name="telefono" class="form-control" id="title"
+                                <input type="tel" name="telefono" class="form-control" id="telefono"
                                     placeholder="Telefono">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">Comentario</label>
                             <div class="col-sm-10">
-                                <input type="text" name="comentario" class="form-control" id="title"
+                                <input type="text" name="comentario" class="form-control" id="comentario"
                                     placeholder="Comentario">
                             </div>
                         </div>
@@ -148,7 +148,7 @@ $servicio             = $_POST['servicio'];
                         <button class="btn btn-primary btnPersonal"> <a
                                 href="portfolio-item.php?servicio=<?php echo $servicio?>&empleado=<?php echo $empleado?>#turnos">Volver</a>
                         </button>
-                        <button type="submit" class="btn btn-primary btnPersonal">Guardar</button>
+                        <button type="submit" class="btn btn-primary btnPersonal" id='btnSubmit'>Guardar</button>
                     </div>
                 </form>
             </div>
@@ -189,7 +189,8 @@ $servicio             = $_POST['servicio'];
     <script src='js/fullcalendar/fullcalendar.min.js'></script>
     <script src='js/fullcalendar/fullcalendar.js'></script>
     <script src='js/fullcalendar/locale/es.js'></script>
-
+    <!-- Validacion Formulario -->
+    <script src="js/validationForm.js"></script>
 </body>
 
 </html>
