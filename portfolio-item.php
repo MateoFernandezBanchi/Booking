@@ -104,7 +104,7 @@ if(empty($emp)){
 
             <div class="row gx-5">
 
-                <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div> -->
+                 <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div>  -->
             </div>
             </section>
             <?php }?>
@@ -303,7 +303,7 @@ $dia7 = $dia[6];
 
             <div class="row gx-5">
 
-                <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div> -->
+                 <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="assets/<?php echo $contenido['imagen2'];?>" alt="..." /></div> -->
             </div>
             <?php }?>
             <div class="row  mt-5 calendarContainer" >
