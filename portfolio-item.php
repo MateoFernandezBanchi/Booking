@@ -425,9 +425,11 @@ $dia7 = $dia[6];
                 }
             },
             events: [
-                <?php while($event = mysqli_fetch_array($events)){
+            <?php while($event = mysqli_fetch_array($events)){
+
             $start = explode(" ", $event['start']);
             $end = explode(" ", $event['end']);
+
             if($start[1] == '00:00:00'){
                 $start = $start[0];
             }else{
@@ -439,6 +441,7 @@ $dia7 = $dia[6];
                 $end = $event['end'];
             }
             ?>
+
             {
                 id: '<?php echo $event['id']; ?>',
                 title: '<?php echo $event['title']; ?>',
@@ -447,6 +450,7 @@ $dia7 = $dia[6];
                 color: '<?php echo $event['color']; ?>'
 
             },
+            
         <?php } ?>
             ]
         });
