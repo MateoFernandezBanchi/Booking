@@ -137,6 +137,18 @@ if(empty($emp)){
                                             <?php } ?>
                                     </select>
                                     <?php } ?>
+
+                                    <?php
+                                    if ($servicio == "blanqueamiento"){
+                                        $sql_se = "SELECT * FROM empleados WHERE servicio3 = '$servicio'";
+                                        $query_se = mysqli_query($conn, $sql_se);
+                                    ?>
+                                    <select name="empleado" class="form-control" id="empleado">
+                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio3']?>"><?php echo $datos_se['nombre']?></option>
+                                            <?php } ?>
+                                    </select>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -279,6 +291,7 @@ $dia7 = $dia[6];
                                             <?php } ?>
                                     </select>
                                     <?php } ?>
+
                                     <?php
                                     if ($servicio == "ortodoncia"){
                                         $sql_se = "SELECT * FROM empleados WHERE servicio2 = '$servicio'";
@@ -286,7 +299,19 @@ $dia7 = $dia[6];
                                     ?>
                                     <select name="empleado" class="form-control" id="empleado">
                                         <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
-                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['nombre']?></option>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio2']?>"><?php echo $datos_se['nombre']?></option>
+                                            <?php } ?>
+                                    </select>
+                                    <?php } ?>
+
+                                    <?php
+                                    if ($servicio == "blanqueamiento"){
+                                        $sql_se = "SELECT * FROM empleados WHERE servicio3 = '$servicio'";
+                                        $query_se = mysqli_query($conn, $sql_se);
+                                    ?>
+                                    <select name="empleado" class="form-control" id="empleado">
+                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                            <option value="<?php echo $datos_se['nombre']?>-<?php echo $datos_se['servicio3']?>"><?php echo $datos_se['nombre']?></option>
                                             <?php } ?>
                                     </select>
                                     <?php } ?>

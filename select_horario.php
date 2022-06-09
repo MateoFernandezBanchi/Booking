@@ -33,7 +33,7 @@ require_once('conection.php');
       
       $h++;
       }
-   
+
          $resultado_inicio  = array_diff($test_h_ini, $test_start);   
          $resultado_final   = array_diff($test_h_end, $test_end);
          $cantidad_horarios = count($test_h_ini);
@@ -46,19 +46,16 @@ require_once('conection.php');
    {
       if($resultado_inicio == NULL)
       {
-      header("location:portfolio-item.php?turno_n=no_disponible&servicio=extraccion&empleado=Kelly");
-        echo "no hay turnos disponibles primer if";
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."");
+        
       }
-            
    } 
    else
    {
      if($cantHor == 10)
      {
-      // header("portfolio-item.php?turno_n=no_disponible");
-      echo "no hay turnos disponibles segundoif";
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."");
      }
-     
    }
 }
 ?> 
@@ -137,7 +134,7 @@ require_once('conection.php');
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
                            <?php
-                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado'";
                               $events_f = mysqli_query($conn, $sql_f);
                               if(mysqli_num_rows($events_f) != NULL)
                               {
