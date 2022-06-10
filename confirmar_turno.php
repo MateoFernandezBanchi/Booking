@@ -51,10 +51,9 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !
                     <div class="container px-5 my-5 containerConfirmacion">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Confirmacion</h5>
-                                <p class="card-text">¡Recibimos su solicitud!</p>
-                                <p class="card-text">Por favor revisa tu email para confirmar el turno.</p>
-                                <a href="/booking-main2" class="btn btn-primary btnConfirm">Volver al inicio</a>
+                                <h5 class="card-title">Confirmation</h5>
+                                <p class="card-text">¡Your appoinment is confirmed!</p>
+                                <a href="/booking-main2" class="btn btn-primary btnConfirm">Back to home</a>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 // Variables para campos
 const email = document.querySelector('#correo');
 const nombre = document.querySelector('#nombre');
-const telefono = document.querySelector('#telefono');
+const tel = document.querySelector('#telefono');
 const form = document.querySelector('#formPersonal');
 const btnSubmit = document.querySelector('#btnSubmit');
 const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -10,12 +10,12 @@ const regexPhone = /^[0-9()-]+$/;
 btnSubmit.disabled = true;
 
 
-
+// Event Listeners input
 eventListeners ();
 function eventListeners () {
     email.addEventListener('blur', validarFormulario);
     nombre.addEventListener('blur', validarFormulario);
-    telefono.addEventListener('blur', validarFormulario)
+    tel.addEventListener('blur', validarFormulario)
 }
 
 function validarFormulario (e) {
@@ -29,10 +29,10 @@ function validarFormulario (e) {
         e.target.classList.add('is-valid', 'valid');
 
     } else {
+        btnSubmit.disabled = true;
         e.target.classList.remove('is-valid');
         e.target.classList.add('is-invalid');
-        showError ('Ese campo es obligatorio');
-        btnSubmit.disabled = true;
+        showError ('This field is required');
     }
     if (e.target.type === 'email') {
      
@@ -49,7 +49,7 @@ function validarFormulario (e) {
         } else {
             e.target.classList.remove('is-valid', 'valid');
             e.target.classList.add('is-invalid');
-            showError ('El email no es valido');
+            showError ('The email is invalid');
             btnSubmit.disabled = true;
 
         }
@@ -66,13 +66,13 @@ function validarFormulario (e) {
         } else {
             e.target.classList.remove('is-valid');
             e.target.classList.add('is-invalid');
-            showError ('El telefono no es valido');
+            showError ('The phone number is invalid');
             btnSubmit.disabled = true;
         }
     }
-    if (er.test(email.value) && telefono.value !=='' && nombre.value !=='') {
+    if (er.test(email.value) && regexPhone.test(tel.value) && nombre.value !=='') {
         btnSubmit.disabled = false;
-        console.log('pasaste la validacion');
+        console.log('Please enter');
     } else {
         console.log('hay campos por validar');
         btnSubmit.disabled = true;
