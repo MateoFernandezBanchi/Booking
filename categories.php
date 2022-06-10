@@ -29,45 +29,14 @@ $cont          = mysqli_query($conn, $consulta_cont);
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.php">LOGO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="link-nav"><a href="categories.php">Categories</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle link-nav" id="navbarDropdownBlog" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                <li><a class="dropdown-item" href="blog-home.html">Service1</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Service2</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Service3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="index.php">HOME</a>
             </div>
         </nav>
         <!-- Header-->
         <header class="py-5 headerIndex">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
-                    <div class="col-lg-8 col-xl-6 col-xxl-6 heroContainer">
-                        <div class="my-5 text-center text-xl-start ">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
-                            <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt
-                                veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis
-                                exercitationem perferendis aliquam, sit possimus error?
-                            </p>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Nuestros Servicios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex">
+                <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex">
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -92,6 +61,20 @@ $cont          = mysqli_query($conn, $consulta_cont);
                             </button>
                         </div>
                     </div>
+                    <div class="col-lg-8 col-xl-6 col-xxl-6 heroContainer">
+                        <div class="my-5 text-center text-xl-start ">
+                            <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
+                            <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt
+                                veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis
+                                exercitationem perferendis aliquam, sit possimus error?
+                            </p>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Choose Service</a>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </header>

@@ -125,6 +125,9 @@
     background-color: $colorPrincipal;
     color: white;
 }
+.modal-content {
+    margin: 0 auto;
+}
 // .modal-footer {
 //     background-color: $colorTerciario;
 // }
@@ -166,13 +169,30 @@ footer {
     position: fixed;
     display: block;
     top:200px;
-    left: 30vw;
-    width: 40%;
-    margin: auto;
+    margin: 0 auto;
+    width: 300px;
+    // margin: auto;
+    z-index: 10;
+    border-radius: 20px;
+    background-color:$colorPrincipal;
+    color: white;
+    box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(255, 255, 255, 0.3);
 }
 .toggle {
     display:none;
 }
 .valid {
     border: 2px solid green;
+}
+
+.modalDoctor {
+    margin-bottom: 60px;
+}
+.mensajeTurnoContainer {
+    // width: 100vw;
+    display:flex;
+    justify-content: center;
+    
 }
