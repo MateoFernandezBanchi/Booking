@@ -4,14 +4,13 @@ if (!isset($_GET['turno_n'])) {
     null;
 } else {
     $no_disponible=$_GET['turno_n'];
-    echo "
-    <div class='card' style='width: 18rem;'>
-        <div class='card-body mensajeTurno'>
-            <h5 class='card-title'>No hay turnos disponibles</h5>
-            <p class='card-text'>Por favor busque otro profesional u otro dia</p>
-            <button class='btn btn-primary btnConfirm' id='btnDenied'>Aceptar</button>
-        </div>
-    </div>";
+    echo "<div class='card' style='width: 18rem;'>
+            <div class='card-body mensajeTurno'>
+                <h5 class='card-title'>No hay turnos disponibles</h5>
+                <p class='card-text'>Por favor busque otro profesional u otro dia</p>
+                <button class='btn btn-primary btnConfirm' id='btnDenied'>Aceptar</button>
+            </div>
+        </div>";
 }
 if (isset($_POST['empleado'])){ 
 $datos             = $_POST['empleado'];
@@ -140,7 +139,23 @@ if(empty($emp)){
                             </div>
                         </form>
                     </div>
+            </div>
+    <footer class=" py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
                 </div>
+                <div class="col-auto">
+                    <a class="link-light small" href="#!">Privacy</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="#!">Terms</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="#!">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 <script>
     const btnDenied = document.getElementById('btnDenied');
     btnDenied.addEventListener('click', toggle);
