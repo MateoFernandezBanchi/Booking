@@ -41,7 +41,7 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Comfirmar Turno';
-        $mail->Body    = 'http://localhost/booking/confirmar_turno.php?email='.$correo.'&hash='.$hash.'';
+        $mail->Body    = 'http://localhost/booking-main/confirmar_turno.php?email='.$correo.'&hash='.$hash.'';
         $mail->send();
     } catch (Exception $e) {
         echo "error: {$mail->ErrorInfo}";
