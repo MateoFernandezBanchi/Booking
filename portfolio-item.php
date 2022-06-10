@@ -240,7 +240,7 @@ $dia7 = $dia[6];
                 </nav>
                 <!-- Page Content-->
                 <?php while($contenido = mysqli_fetch_array($cont)){ ?>
-                <section class="py-5">
+                <section>
                     <div class="container px-5">
                         <div id="descripcionServicio"
                             class="row gx-5 justify-content-center align-items-center servicioHero">
