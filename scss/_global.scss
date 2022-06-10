@@ -123,6 +123,7 @@
 .modal-header h4 {
     font-size: 20px;
     background-color: $colorPrincipal;
+    color: white;
 }
 // .modal-footer {
 //     background-color: $colorTerciario;
@@ -150,4 +151,28 @@
 /* FOOTER */
 footer {
     background-color: black;
+}
+
+// VALIDACION FORM
+
+.errorMessage {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.mensajeTurno {
+    position: fixed;
+    display: block;
+    top:200px;
+    left: 30vw;
+    width: 40%;
+    margin: auto;
+}
+.toggle {
+    display:none;
+}
+.valid {
+    border: 2px solid green;
 }

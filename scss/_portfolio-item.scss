@@ -1,3 +1,9 @@
 .servicioHero {
     background-color: $colorSecundario;
 }
+.header_SelectDoctor {
+    background-color: $colorPrincipal;
+    h4 {
+        background-color: none;
+    }
+}
