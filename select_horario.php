@@ -46,7 +46,7 @@ require_once('conection.php');
    {
       if($resultado_inicio == NULL)
       {
-      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."");
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."&no_dia=".$horario."");
         
       }
    } 
@@ -54,7 +54,7 @@ require_once('conection.php');
    {
      if($cantHor == 10)
      {
-      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."");
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."&no_dia=".$horario."");
      }
    }
 }
