@@ -85,7 +85,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-10 col-xl-7">
                         <div class="text-center">
-                            <div class="fs-4 mb-4 fst-italic">"Cada diente en la cabeza de un hombre es más valioso que
+                            <div class="fs-4 mb-4 fst-italic">"Cada diente en la cabeza de un hombre es mÃ¡s valioso que
                                 un diamante."</div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
@@ -116,24 +116,16 @@ $cont          = mysqli_query($conn, $consulta_cont);
                 <div class="row gx-5">
                     <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
-                                    <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
-                                    <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex justify-content-center mb-5">
-                                        <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
-                                    </div>
-                                </div> 
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
+                                <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
+                                <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0">
                                 <div class="d-flex justify-content-center mb-5">
-                                    <button class="btn btnPersonal"><a
-                                            href="portfolio-item.php?servicio=<?php echo $row['servicio']?>&empleado=<?php echo $row['empleado']?>#turnos">See
-                                            more</a></button>
+                                <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
                                 </div>
                             </div>
                         </div>
