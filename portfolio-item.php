@@ -359,6 +359,7 @@ $dia7 = $dia[6];
             <script src='js/fullcalendar/fullcalendar.min.js'></script>
             <script src='js/fullcalendar/fullcalendar.js'></script>
             <script src='js/fullcalendar/locale/es.js'></script>
+            <script src="jquery.ui.touch.js"></script>
             <script>
             var a = <?php echo $dia1;?>;
             var b = <?php echo $dia2;?>;
@@ -390,6 +391,7 @@ $dia7 = $dia[6];
                     selectable: true,
                     selectHelper: false,
                     slotEventOverlap: true,
+                    selectLongPressDelay: .1,
                     minTime: '08:00:00',
                     maxTime: '19:00:00',
                     Boolean,
@@ -423,7 +425,7 @@ $dia7 = $dia[6];
                     },
 
                     events: [
-                        <?php while($event = mysqli_fetch_array($events)){
+            <?php while($event = mysqli_fetch_array($events)){
             $start = explode(" ", $event['start']);
             $end = explode(" ", $event['end']);
 
@@ -432,13 +434,11 @@ $dia7 = $dia[6];
             }else{
                 $start = $event['start'];
             }
-
             if($end[1] == '00:00:00'){
                 $end = $end[0];
             }else{
                 $end = $event['end'];
             }
-
             ?>
             {
                 id: '<?php echo $event['id']; ?>',
@@ -447,13 +447,10 @@ $dia7 = $dia[6];
                 end: '<?php echo $end; ?>',
                 color: '<?php echo $event['color']; ?>'
             },
-        <?php } ?>
-
-                        <?php } ?>
+        <?php } ?>    
+        
                     ]
                 });
-
-
             });
             const btnDenied = document.getElementById('btnDenied');
             btnDenied.addEventListener('click', toggle);
@@ -463,4 +460,4 @@ $dia7 = $dia[6];
             </script>
         </body>
         </html>
-
+        <?php } ?>
