@@ -5,7 +5,7 @@ require_once('conection.php');
    $servicio          = $_POST['servicio'];
    $fecha             = explode(" ", $horario);
 
-   $sql               = "SELECT id, start, start_fecha, start_horas, end_horas FROM events WHERE start_fecha = '$fecha[0]'";
+   $sql               = "SELECT id, start, start_fecha, start_horas, end_horas FROM events WHERE start_fecha = '$fecha[0]' AND empleado = '$empleado'";
    $events            = mysqli_query($conn, $sql);
    $i                 = 0;
    if(mysqli_num_rows($events)>0){
@@ -15,7 +15,7 @@ require_once('conection.php');
    $i++;
    }
 
-   $sql_h    = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+   $sql_h    = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado'";
    $events_h = mysqli_query($conn, $sql_h);
    $h        = 0;
    while ($data_h = mysqli_fetch_array($events_h)) {
@@ -55,7 +55,7 @@ require_once('conection.php');
    {
      if($cantHor == 10)
      {
-      // header("portfolio-item.php?turno_n=no_disponible");
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=extraccion&empleado=Kelly");
       echo "no hay turnos disponibles segundoif";
      }
      
@@ -113,7 +113,7 @@ require_once('conection.php');
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
                            <?php
-                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos";
+                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado'";
                               $events_f = mysqli_query($conn, $sql_f);
                               if(mysqli_num_rows($events_f) != NULL)
                               {
@@ -236,8 +236,3 @@ require_once('conection.php');
       <script src='js/fullcalendar/locale/es.js'></script>
    </body>
 </html>
-
-
-
-
-
