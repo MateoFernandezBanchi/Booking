@@ -16,14 +16,14 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Booking System</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/styles2.min.css">
+    <link rel="stylesheet" href="./css/test.php">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -42,13 +42,13 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -118,8 +118,9 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                 <div class="row gx-5">
                     <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
+                    <a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="http://localhost/admin/images/<?php echo $row['imagen1']?>" alt="..." />
+                            <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $row['imagen1']?>" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                 <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
@@ -127,10 +128,11 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0">
                                 <div class="d-flex justify-content-center mb-5">
-                                <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
+                                <button class="btn btnPersonal">See more</button>
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <?php } ?>
         </section>

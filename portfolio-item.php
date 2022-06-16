@@ -6,13 +6,13 @@ if (!isset($_GET['turno_n'])) {
     $no_disponible=$_GET['turno_n'];
     echo "
     <div class='mensajeturnoContainer'>
-        <div class='card' style='width: 18rem;'>
-            <div class='card-body mensajeTurno'>
-                <h5 class='card-title'>No appointments available</h5>
-                <p class='card-text'>Please search another day or professional</p>
-                <button class='btn btn-primary btnConfirm' id='btnDenied'>Accept</button>
-            </div>
+    <div class='card'>
+        <div class='card-body mensajeTurno'>
+            <h5 class='card-title'>No appointments available</h5>
+            <p class='card-text'>Please search another day or professional</p>
+            <button class='btn btn-primary btnConfirm' id='btnDenied'>Accept</button>
         </div>
+    </div>
     </div>";
 }
 if (isset($_POST['empleado'])){ 
@@ -35,12 +35,12 @@ if(empty($emp)){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Booking</title>
+    <title>Booking System</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href='css/fullcalendar.css' rel='stylesheet' />
-    <link rel="stylesheet" href="./css/styles2.min.css">
+    <link rel="stylesheet" href="./css/test.php">
     <style>
     body {
         padding-top: 70px;
@@ -73,7 +73,7 @@ if(empty($emp)){
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
-                            <p class="lead fw-normal text-muted mb-0"><?php echo $contenido['descripcion'];?></p>
+                            <p class="lead fw-normal mb-0"><?php echo $contenido['descripcion'];?></p>
                         </div>
                     </div>
                     <?php }?>
@@ -122,7 +122,7 @@ if(empty($emp)){
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                     <div class="col-auto">
-                        <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
+                    <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                     </div>
                     <div class="col-auto">
                         <a class="link-light small" href="#!">Privacy</a>
@@ -132,26 +132,13 @@ if(empty($emp)){
                         <a class="link-light small" href="#!">Contact</a>
                     </div>
                  </div>
-        <footer class=" py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
-                </div>
-                <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
-                </div>
-            </div>
-        </footer>
-        <script>
+        
+                 <script>
         const btnDenied = document.getElementById('btnDenied');
         btnDenied.addEventListener('click', toggle);
+
         function toggle() {
-            btnDenied.parentNode.classList.add('toggle');
+            btnDenied.parentElement.parentElement.parentElement.classList.add('toggle');
         }
         </script>
 <?php }else{
@@ -192,7 +179,7 @@ $dia7 = $dia[6];
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta name="description" content="" />
             <meta name="author" content="" />
-            <title>Booking</title>
+            <title>Booking System</title>
             <!-- Favicon-->
             <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
             <!-- Bootstrap icons-->
@@ -233,7 +220,7 @@ $dia7 = $dia[6];
                             <div class="col-lg-6">
                                 <div class="text-center mb-5">
                                     <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
-                                    <p class="lead fw-normal text-muted mb-0"><?php echo $contenido['descripcion'];?>
+                                    <p class="lead fw-normal b-0"><?php echo $contenido['descripcion'];?>
                                     </p>
                                 </div>
                             </div>
@@ -335,7 +322,7 @@ $dia7 = $dia[6];
                 <div class="container px-5">
                     <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                         <div class="col-auto">
-                            <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
+                        <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                         </div>
                         <div class="col-auto">
                             <a class="link-light small" href="#!">Privacy</a>

@@ -22,14 +22,14 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Booking System</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/styles2.min.css">
+    <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
     <link rel="stylesheet" href="./css/test.php">
 </head>
 
@@ -38,7 +38,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.php">HOME</a>
+                <a class="navbar-brand test" href="index.php">HOME</a>
             </div>
         </nav>
         <!-- Header-->
@@ -58,7 +58,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                         </div>
                     </div>
                     <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex"><img
-                            class="img-fluid rounded-3 my-5" src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
+                            class="img-fluid rounded-3 my-5" src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
                   </div>
             </div>
         </header>
@@ -99,8 +99,9 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                 <div class="row gx-5">
                 <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
+                    <a href="categories.php?servicio=seccion&tipo=<?php echo $row['tipo_servicio']?>">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="http://localhost/admin/images/<?php echo $images_serv['imagen1']?>" alt="..." />
+                                <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $images_serv['imagen1']?>" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                     <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
@@ -108,10 +109,11 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                                 </div>
                                 <div class="card-footer p-4 pt-0 border-top-0">
                                     <div class="d-flex justify-content-center mb-5">
-                                        <button class="btn btnPersonal"><a href="categories.php?servicio=seccion&tipo=<?php echo $row['tipo_servicio']?>">See more</a></button>
+                                        <button class="btn btnPersonal">See more</button>
                                     </div>
                                 </div> 
                             </div>
+                            </a>
                     </div>
             <?php } ?>
         </section>
@@ -121,14 +123,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
-                </div>
-                <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
+                <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                 </div>
             </div>
         </div>
