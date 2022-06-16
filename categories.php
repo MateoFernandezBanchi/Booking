@@ -4,11 +4,13 @@ $servicios = $_GET['tipo'];
 require_once('conection.php');
 $consulta_cont = "SELECT * FROM contenido_paginas WHERE tipo_contenido = '$seccion' AND tipo_servicio = '$servicios'";
 $cont          = mysqli_query($conn, $consulta_cont);
-?>
 
+$consulta_img_cat = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
+$cont_img_cat          = mysqli_query($conn, $consulta_img_cat);
+$images_cat = mysqli_fetch_array($cont_img_cat);
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -29,55 +31,24 @@ $cont          = mysqli_query($conn, $consulta_cont);
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.php">LOGO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="link-nav"><a href="categories.php">Categories</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle link-nav" id="navbarDropdownBlog" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                <li><a class="dropdown-item" href="blog-home.html">Service1</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Service2</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Service3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="index.php">HOME</a>
             </div>
         </nav>
         <!-- Header-->
         <header class="py-5 headerIndex">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
-                    <div class="col-lg-8 col-xl-6 col-xxl-6">
-                        <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
-                            <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt
-                                veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis
-                                exercitationem perferendis aliquam, sit possimus error?
-                            </p>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Nuestros Servicios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex">
+                <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex">
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -92,6 +63,20 @@ $cont          = mysqli_query($conn, $consulta_cont);
                             </button>
                         </div>
                     </div>
+                    <div class="col-lg-8 col-xl-6 col-xxl-6 heroContainer">
+                        <div class="my-5 text-center text-xl-start ">
+                            <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
+                            <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt
+                                veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis
+                                exercitationem perferendis aliquam, sit possimus error?
+                            </p>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Choose Service</a>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </header>
@@ -119,7 +104,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
             </div>
         </div> -->
         <!-- Blog preview section-->
-        <section class="py-5" id="servicios">
+        <section class="py-5 mainContainer" id="servicios">
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
@@ -133,6 +118,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                 <div class="row gx-5">
                     <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
+<<<<<<< HEAD
                             <div class="card h-100 shadow border-0">
                                 <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
                                 <div class="card-body p-4">
@@ -145,12 +131,18 @@ $cont          = mysqli_query($conn, $consulta_cont);
                                         <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
                                     </div>
                                 </div> 
+=======
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" src="http://localhost/admin/images/<?php echo $row['imagen1']?>" alt="..." />
+                            <div class="card-body p-4">
+                                <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
+                                <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
+                                <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
+>>>>>>> c76fc7d3a8b1c179f3dbb85187771be61a9b8056
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0">
                                 <div class="d-flex justify-content-center mb-5">
-                                    <button class="btn btnPersonal"><a
-                                            href="portfolio-item.php?servicio=<?php echo $row['servicio']?>&empleado=<?php echo $row['empleado']?>#turnos">See
-                                            more</a></button>
+                                <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
                                 </div>
                             </div>
                         </div>

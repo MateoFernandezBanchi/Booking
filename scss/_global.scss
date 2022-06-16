@@ -1,0 +1,198 @@
+/* GLOBAL */
+.navContainer {
+    background-color: $colorPrincipal;
+}
+.link-nav {
+    color: $colorTerciario;
+    text-decoration: none;
+    &:hover {
+        color: white;
+        text-decoration: underline;
+    }
+    a {
+        color: $colorTerciario;
+        padding: 20px;
+        text-decoration: none;
+    }
+}
+
+/* INDEX */
+.headerIndex {
+    height: 80vh;
+    background-color: $colorSecundario;
+}
+.calendar {
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.3);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.3);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.3);
+}
+.cardServicio {
+    transition: all 1s;
+}
+.cardServicio:hover {
+    transform: scale(1.07);
+}
+.fc-left h2 {
+    color: white;
+    text-align: center;
+}
+
+.fc-today-button {
+    background-color: $colorPrincipal;
+    border-radius: 20px;
+}
+
+.fc-header-toolbar {
+    display: flex;
+    justify-content: center;
+}
+.calendar {
+    border-radius: 30px;
+}
+
+.fc-prev-button, .fc-next-button {
+    border: none;
+}
+
+.modal-header {
+    flex-direction: column;
+}
+.modal-footer {
+    justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.modal-content {
+    border-radius: 20px;
+    max-width: 350px;
+}
+#descripcionServicio {
+    height: 80vh;
+}
+/* TURNOS */
+#turnos h1, #turnos h4 {
+    text-align: center;
+}
+.mainHorario {
+    height: 85vh;
+    background-image: url("https://via.placeholder.com/1200.png");
+    background-size: cover;
+    
+}
+
+.formHorarios {
+    max-width: 350px;
+    margin: 0 auto;
+    background-color: $colorCuarto;
+    border-radius: 20px;
+}
+
+/* INFORMACION PERSONAL */
+
+.formPersonal {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: $colorTerciario;
+    border-radius:30px ;
+}
+.headerPersonal {
+    background-color: $colorPrincipal;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.form-control:focus {
+    border-color: rgba(3, 203, 155, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(3, 203, 155, 0.6);
+    outline: 0 none;
+    
+}
+
+.form-group div{
+    margin: 0 auto;
+    width: 100%;
+}
+.control-label {
+    min-width: 200px;
+}
+.modal-title {
+    text-align: center;
+    font-size: 20px;
+}
+.modal-header h4 {
+    font-size: 20px;
+    background-color: $colorPrincipal;
+    color: white;
+}
+.modal-content {
+    margin: 0 auto;
+}
+// .modal-footer {
+//     background-color: $colorTerciario;
+// }
+/* CONFIRMACION */
+.containerConfirmacion {
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+}
+.btnConfirm {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+.card-text, .card-title {
+    text-align: center;
+}
+.card-body {
+    background-color: $colorCuarto;
+}
+.card-footer {
+    background-color: $colorCuarto;
+}
+/* FOOTER */
+footer {
+    background-color: black;
+}
+
+// VALIDACION FORM
+
+.errorMessage {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.mensajeTurno {
+    position: fixed;
+    display: block;
+    top:200px;
+    margin: 0 auto;
+    width: 300px;
+    // margin: auto;
+    z-index: 10;
+    border-radius: 20px;
+    background-color:$colorPrincipal;
+    color: white;
+    box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(255, 255, 255, 0.3);
+}
+.toggle {
+    display:none;
+}
+.valid {
+    border: 2px solid green;
+}
+
+.modalDoctor {
+    margin-bottom: 60px;
+}
+.mensajeTurnoContainer {
+    // width: 100vw;
+    display:flex;
+    justify-content: center;
+    
+}

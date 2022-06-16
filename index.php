@@ -4,6 +4,14 @@ require_once('conection.php');
 $consulta_cont = "SELECT * FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
 $cont          = mysqli_query($conn, $consulta_cont);
 
+
+$consulta_img_cat = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
+$cont_img_cat          = mysqli_query($conn, $consulta_img_cat);
+$images_cat = mysqli_fetch_array($cont_img_cat);
+
+$consulta_img_serv = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'seccion'";
+$cont_img_serv          = mysqli_query($conn, $consulta_img_serv);
+$images_serv = mysqli_fetch_array($cont_img_serv);
 ?>
 
 <!DOCTYPE html>
@@ -30,23 +38,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.php">LOGO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle link-nav" id="navbarDropdownBlog" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="index.php">HOME</a>
             </div>
         </nav>
         <!-- Header-->
@@ -66,7 +58,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                         </div>
                     </div>
                     <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex"><img
-                            class="img-fluid rounded-3 my-5" src="https://via.placeholder.com/728x480.png" alt="..." /></div>
+                            class="img-fluid rounded-3 my-5" src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
                   </div>
             </div>
         </header>
@@ -108,7 +100,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                 <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
+                                <img class="card-img-top" src="http://localhost/admin/images/<?php echo $images_serv['imagen1']?>" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                     <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>

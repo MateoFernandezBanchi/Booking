@@ -43,44 +43,19 @@ $servicio             = $_POST['servicio'];
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navContainer">
             <div class="container px-5">
-                <a class="navbar-brand" href="index.php">Centro Odontologico</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/booking-main">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                                <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="index.php">HOME</a>
             </div>
         </nav>
         <!-- Page Content-->
         <section class="py-5">
             <div class="container px-5 containerPersonal">
-                <form class="form-horizontal formPersonal calendar" method="POST" action="addEvent.php">
+                <form class="form-horizontal formPersonal calendar" method="POST" action="addEvent.php" id="formPersonal">
                     <div class="modal-header headerPersonal">
-                        <h4 class="modal-title" id="myModalLabel">Estas a punto de pedir un Turno:</h4>
+                        <h4 class="modal-title" id="myModalLabel">Complete this fields to confirm:</h4>
                     </div>
                     <div class="modal-body">
                     <div class="form-group">
-                            <label for="start" class="col-sm-2 control-label">Para el dia:</label>
+                            <label for="start" class="col-sm-2 control-label">For the day:</label>
                             <div class="col-sm-10">
                                 <?php $show_fecha = explode(" ", $fecha_seleccionada); ?>
                                 <input type="text" class="form-control" placeholder="<?php echo $show_fecha[0]?>"
@@ -90,17 +65,17 @@ $servicio             = $_POST['servicio'];
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="end" class="col-sm-2 control-label">En el Horario:</label>
+                            <label for="end" class="col-sm-2 control-label">Hour:</label>
                             <div class="col-sm-10">
                                 <input type="text" name="horario" class="form-control" id="start"
                                     value="<?php echo $horario_seleccionado;?>" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="title" class="col-sm-2 control-label">Nombre</label>
+                            <label for="title" class="col-sm-2 control-label">Name:</label>
                             <div class="col-sm-10">
-                                <input type="text" name="nombre_cliente" class="form-control" id="title"
-                                    placeholder="Titulo">
+                                <input type="text" name="nombre_cliente" class="form-control" id="nombre"
+                                    placeholder="Name">
                             </div>
                         </div>
                         <div class="form-group" style="display: none;">
@@ -110,24 +85,24 @@ $servicio             = $_POST['servicio'];
                         </div>
 
                         <div class="form-group">
-                            <label for="title" class="col-sm-2 control-label">Correo Electronico</label>
+                            <label for="title" class="col-sm-2 control-label">Email:</label>
                             <div class="col-sm-10">
-                                <input type="text" name="correo" class="form-control" id="title"
-                                    placeholder="Correo Electronico">
+                                <input type="email" name="correo" class="form-control" id="correo"
+                                    placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="title" class="col-sm-2 control-label">Telefono</label>
+                            <label for="title" class="col-sm-2 control-label">Phone number:</label>
                             <div class="col-sm-10">
-                                <input type="text" name="telefono" class="form-control" id="title"
-                                    placeholder="Telefono">
+                                <input type="tel" name="telefono" class="form-control" id="telefono"
+                                    placeholder="Phone number">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="title" class="col-sm-2 control-label">Comentario</label>
+                            <label for="title" class="col-sm-2 control-label">Comments</label>
                             <div class="col-sm-10">
-                                <input type="text" name="comentario" class="form-control" id="title"
-                                    placeholder="Comentario">
+                                <input type="text" name="comentario" class="form-control" id="comentario"
+                                    placeholder="Comments">
                             </div>
                         </div>
                         <div class="form-group" style="display: none;">
@@ -146,9 +121,9 @@ $servicio             = $_POST['servicio'];
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary btnPersonal"> <a
-                                href="portfolio-item.php?servicio=<?php echo $servicio?>&empleado=<?php echo $empleado?>#turnos">Volver</a>
+                                href="portfolio-item.php?servicio=<?php echo $servicio?>&empleado=<?php echo $empleado?>#turnos">Previous</a>
                         </button>
-                        <button type="submit" class="btn btn-primary btnPersonal">Guardar</button>
+                        <button type="submit" class="btn btn-primary btnPersonal" id='btnSubmit'>Confirm</button>
                     </div>
                 </form>
             </div>
@@ -189,7 +164,8 @@ $servicio             = $_POST['servicio'];
     <script src='js/fullcalendar/fullcalendar.min.js'></script>
     <script src='js/fullcalendar/fullcalendar.js'></script>
     <script src='js/fullcalendar/locale/es.js'></script>
-
+    <!-- Validacion Formulario -->
+    <script src="js/validationForm.js"></script>
 </body>
 
 </html>
