@@ -4,11 +4,13 @@ $servicios = $_GET['tipo'];
 require_once('conection.php');
 $consulta_cont = "SELECT * FROM contenido_paginas WHERE tipo_contenido = '$seccion' AND tipo_servicio = '$servicios'";
 $cont          = mysqli_query($conn, $consulta_cont);
-?>
 
+$consulta_img_cat = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
+$cont_img_cat          = mysqli_query($conn, $consulta_img_cat);
+$images_cat = mysqli_fetch_array($cont_img_cat);
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -40,13 +42,13 @@ $cont          = mysqli_query($conn, $consulta_cont);
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -117,7 +119,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                     <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
+                            <img class="card-img-top" src="http://localhost/admin/images/<?php echo $row['imagen1']?>" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                 <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
