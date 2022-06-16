@@ -14,14 +14,15 @@ $cont          = mysqli_query($conn, $consulta_cont);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Booking System</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/styles2.min.css">
+    <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
+    <link rel="stylesheet" href="./css/test.php">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -116,6 +117,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                 <div class="row gx-5">
                     <?php while ($row = mysqli_fetch_array($cont)){ ?>
                     <div class="col-lg-4 mb-5 cardServicio">
+                    <a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">
                         <div class="card h-100 shadow border-0">
                             <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
                             <div class="card-body p-4">
@@ -125,10 +127,11 @@ $cont          = mysqli_query($conn, $consulta_cont);
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0">
                                 <div class="d-flex justify-content-center mb-5">
-                                <button class="btn btnPersonal"><a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">See more</a></button>
+                                <button class="btn btnPersonal">See more</button>
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                     <?php } ?>
         </section>
@@ -138,14 +141,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
-                </div>
-                <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
+                <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                 </div>
             </div>
         </div>

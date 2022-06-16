@@ -5,8 +5,8 @@ if (!isset($_GET['turno_n'])) {
 } else {
     $no_disponible=$_GET['turno_n'];
     echo "
-    <div class='mensajeturnoContainer'  >
-    <div class='card' style='width: 18rem;' >
+    <div class='mensajeturnoContainer'>
+    <div class='card'>
         <div class='card-body mensajeTurno'>
             <h5 class='card-title'>No appointments available</h5>
             <p class='card-text'>Please search another day or professional</p>
@@ -40,7 +40,8 @@ if(empty($emp)){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href='css/fullcalendar.css' rel='stylesheet' />
-    <link rel="stylesheet" href="./css/styles2.min.css">
+ <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
+ <link rel="stylesheet" href="./css/test.php">
     <style>
     body {
         padding-top: 70px;
@@ -70,11 +71,11 @@ if(empty($emp)){
         <?php while($contenido = mysqli_fetch_array($cont)){ ?>
         <section class="">
             <div class="container px-5 servicioHero">
-                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class=" row gx-5 justify-content-center align-items-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
-                            <p class="lead fw-normal text-muted mb-0"><?php echo $contenido['descripcion'];?></p>
+                            <p class="lead fw-normal mb-0"><?php echo $contenido['descripcion'];?></p>
                         </div>
                     </div>
                     <?php }?>
@@ -83,7 +84,7 @@ if(empty($emp)){
                             <div class="modal-content">
                                 <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
                                     <div class="modal-header header_SelectDoctor">
-                                        <h4 class="modal-title" id="myModalLabel">Select Profesional</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Select a Professional</h4>
                                     </div>
                                     <div class="modal-body">
                                     <div class="col-sm-10">
@@ -111,32 +112,11 @@ if(empty($emp)){
         </section>
 
 
-        <footer class="py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto">
-                        <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
-                    </div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Contact</a>
-                    </div>
-            </div>
     <footer class=" py-4 mt-auto">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
-                </div>
-                <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
+                    <div class="small m-0 text-white">Copyright &copy; Webii 2022</div>
                 </div>
             </div>
         </footer>
@@ -146,7 +126,7 @@ if(empty($emp)){
         btnDenied.addEventListener('click', toggle);
 
         function toggle() {
-            btnDenied.parentNode.classList.add('toggle');
+            btnDenied.parentElement.parentElement.parentElement.classList.add('toggle');
         }
         </script>
         <?php
@@ -197,7 +177,8 @@ $dia7 = $dia[6];
             <!-- Core theme CSS (includes Bootstrap)-->
             <link href="css/styles.css" rel="stylesheet" />
             <link href='css/fullcalendar.css' rel='stylesheet' />
-            <link rel="stylesheet" href="./css/styles2.min.css">
+            <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
+    <link rel="stylesheet" href="./css/test.php">
             <style>
             body {
                 padding-top: 70px;
@@ -231,20 +212,20 @@ $dia7 = $dia[6];
                 <?php while($contenido = mysqli_fetch_array($cont)){ ?>
                 <section>
                 <div class="container px-5 servicioHero">
-                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class="  row gx-5 justify-content-center align-items-center">
                             <div class="col-lg-6">
                                 <div class="text-center mb-5">
                                     <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
-                                    <p class="lead fw-normal text-muted mb-0"><?php echo $contenido['descripcion'];?>
+                                    <p class="lead fw-normal mb-0"><?php echo $contenido['descripcion'];?>
                                     </p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog modalContainer" role="document">
                                     <div class="modal-content">
                                         <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
                                             <div class="modal-header header_SelectDoctor">
-                                                <h4 class="modal-title" id="myModalLabel">Seleccione un Doctor:</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Select a professional:</h4>
                                             </div>
                                             <div class="modal-body">
                                             <div class="col-sm-10">
@@ -277,7 +258,7 @@ $dia7 = $dia[6];
                     <div class="row  mt-5 calendarContainer">
                         <div class="col-lg-12 text-center ">
                             <h1 id="turnos">Appoinments</h1>
-                            <h4 class="mb-4 mt-4">
+                            <h4 class="my-4 mx-4">
                                 Select a day on the calendar to book your appoinment with
                                 <?php echo $empleado?></h4>
                             <div id="calendar" class="col-centered calendar">
@@ -285,7 +266,7 @@ $dia7 = $dia[6];
                         </div>
                     </div>
                     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modalContainer" role="document">
                             <div class="modal-content">
                                 <form class="form-horizontal" method="POST" action="select_horario.php">
                                     <div class="modal-header headerPersonal">
@@ -328,14 +309,7 @@ $dia7 = $dia[6];
                 <div class="container px-5">
                     <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                         <div class="col-auto">
-                            <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
-                        </div>
-                        <div class="col-auto">
-                            <a class="link-light small" href="#!">Privacy</a>
-                            <span class="text-white mx-1">&middot;</span>
-                            <a class="link-light small" href="#!">Terms</a>
-                            <span class="text-white mx-1">&middot;</span>
-                            <a class="link-light small" href="#!">Contact</a>
+                        <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                         </div>
                     </div>
                 </div>
@@ -359,6 +333,7 @@ $dia7 = $dia[6];
             <script src='js/fullcalendar/fullcalendar.min.js'></script>
             <script src='js/fullcalendar/fullcalendar.js'></script>
             <script src='js/fullcalendar/locale/es.js'></script>
+            <script src="jquery.ui.touch.js"></script>
             <script>
             var a = <?php echo $dia1;?>;
             var b = <?php echo $dia2;?>;
@@ -390,6 +365,7 @@ $dia7 = $dia[6];
                     selectable: true,
                     selectHelper: false,
                     slotEventOverlap: true,
+                    selectLongPressDelay: .1,
                     minTime: '08:00:00',
                     maxTime: '19:00:00',
                     Boolean,
@@ -423,7 +399,7 @@ $dia7 = $dia[6];
                     },
 
                     events: [
-                        <?php while($event = mysqli_fetch_array($events)){
+            <?php while($event = mysqli_fetch_array($events)){
             $start = explode(" ", $event['start']);
             $end = explode(" ", $event['end']);
 
@@ -432,13 +408,11 @@ $dia7 = $dia[6];
             }else{
                 $start = $event['start'];
             }
-
             if($end[1] == '00:00:00'){
                 $end = $end[0];
             }else{
                 $end = $event['end'];
             }
-
             ?>
             {
                 id: '<?php echo $event['id']; ?>',
@@ -447,20 +421,12 @@ $dia7 = $dia[6];
                 end: '<?php echo $end; ?>',
                 color: '<?php echo $event['color']; ?>'
             },
-        <?php } ?>
-
-                        <?php } ?>
+        <?php } ?>    
+        
                     ]
                 });
-
-
             });
-            const btnDenied = document.getElementById('btnDenied');
-            btnDenied.addEventListener('click', toggle);
-            function toggle() {
-                btnDenied.classList.add('toggle');
-            }
             </script>
         </body>
         </html>
-
+        <?php } ?>

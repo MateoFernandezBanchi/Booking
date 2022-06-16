@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"sass scss/styles2.scss css/styles2.min.css -w --no-source-map -s compressed"
+    "start":"sass scss/styles2.scss css/styles2.min.css -w --no-source-map "
   },
   "keywords": [],
   "author": "",
