@@ -58,7 +58,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                         </div>
                     </div>
                     <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex"><img
-                            class="img-fluid rounded-3 my-5" src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
+                            class="img-fluid rounded-3 my-5" src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
                   </div>
             </div>
         </header>
@@ -101,7 +101,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                     <div class="col-lg-4 mb-5 cardServicio">
                     <a href="categories.php?servicio=seccion&tipo=<?php echo $row['tipo_servicio']?>">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="http://localhost/admin/images/<?php echo $images_serv['imagen1']?>" alt="..." />
+                                <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $images_serv['imagen1']?>" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                     <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
@@ -123,7 +123,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy;Webii 2022</div>
+                <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                 </div>
             </div>
         </div>
