@@ -33,7 +33,7 @@ require_once('conection.php');
       
       $h++;
       }
-   
+
          $resultado_inicio  = array_diff($test_h_ini, $test_start);   
          $resultado_final   = array_diff($test_h_end, $test_end);
          $cantidad_horarios = count($test_h_ini);
@@ -46,19 +46,16 @@ require_once('conection.php');
    {
       if($resultado_inicio == NULL)
       {
-      header("location:portfolio-item.php?turno_n=no_disponible&servicio=extraccion&empleado=Kelly");
-        echo "no hay turnos disponibles primer if";
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."&no_dia=".$horario."");
+        
       }
-            
    } 
    else
    {
      if($cantHor == 10)
      {
-      header("location:portfolio-item.php?turno_n=no_disponible&servicio=extraccion&empleado=Kelly");
-      echo "no hay turnos disponibles segundoif";
+      header("location:portfolio-item.php?turno_n=no_disponible&servicio=".$servicio."&empleado=".$empleado."&no_dia=".$horario."");
      }
-     
    }
 }
 ?> 

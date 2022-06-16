@@ -4,24 +4,25 @@ $servicios = $_GET['tipo'];
 require_once('conection.php');
 $consulta_cont = "SELECT * FROM contenido_paginas WHERE tipo_contenido = '$seccion' AND tipo_servicio = '$servicios'";
 $cont          = mysqli_query($conn, $consulta_cont);
-?>
 
+$consulta_img_cat = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
+$cont_img_cat          = mysqli_query($conn, $consulta_img_cat);
+$images_cat = mysqli_fetch_array($cont_img_cat);
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Booking System</title>
+    <title>Modern Business - Start Bootstrap Template</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
     <link rel="stylesheet" href="./css/test.php">
 </head>
 
@@ -41,13 +42,13 @@ $cont          = mysqli_query($conn, $consulta_cont);
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/480x320.png" class="d-block w-100" alt="...">
+                                    <img src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
@@ -86,7 +87,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-10 col-xl-7">
                         <div class="text-center">
-                            <div class="fs-4 mb-4 fst-italic">"Cada diente en la cabeza de un hombre es mÃ¡s valioso que
+                            <div class="fs-4 mb-4 fst-italic">"Cada diente en la cabeza de un hombre es más valioso que
                                 un diamante."</div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
@@ -119,7 +120,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                     <div class="col-lg-4 mb-5 cardServicio">
                     <a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
+                            <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $row['imagen1']?>" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                 <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
@@ -141,7 +142,14 @@ $cont          = mysqli_query($conn, $consulta_cont);
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
+                    <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
+                </div>
+                <div class="col-auto">
+                    <a class="link-light small" href="#!">Privacy</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="#!">Terms</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="#!">Contact</a>
                 </div>
             </div>
         </div>

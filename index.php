@@ -4,6 +4,14 @@ require_once('conection.php');
 $consulta_cont = "SELECT * FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
 $cont          = mysqli_query($conn, $consulta_cont);
 
+
+$consulta_img_cat = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'categoria'";
+$cont_img_cat          = mysqli_query($conn, $consulta_img_cat);
+$images_cat = mysqli_fetch_array($cont_img_cat);
+
+$consulta_img_serv = "SELECT imagen1 FROM contenido_paginas WHERE tipo_contenido = 'seccion'";
+$cont_img_serv          = mysqli_query($conn, $consulta_img_serv);
+$images_serv = mysqli_fetch_array($cont_img_serv);
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +58,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                         </div>
                     </div>
                     <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex"><img
-                            class="img-fluid rounded-3 my-5" src="https://via.placeholder.com/728x480.png" alt="..." /></div>
+                            class="img-fluid rounded-3 my-5" src="http://localhost/admin/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
                   </div>
             </div>
         </header>
@@ -93,7 +101,7 @@ $cont          = mysqli_query($conn, $consulta_cont);
                     <div class="col-lg-4 mb-5 cardServicio">
                     <a href="categories.php?servicio=seccion&tipo=<?php echo $row['tipo_servicio']?>">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://via.placeholder.com/480x320.png" alt="..." />
+                                <img class="card-img-top" src="http://localhost/admin/images/<?php echo $images_serv['imagen1']?>" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                     <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>

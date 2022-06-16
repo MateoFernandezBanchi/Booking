@@ -1,9 +1,9 @@
 <?php
-/*use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php'; */
+require 'PHPMailer/src/SMTP.php';
 require_once('conection.php');
 if (isset($_POST['title']) && isset($_POST['start'])) {
     $nombre_cliente   = $_POST['nombre_cliente'];
@@ -25,7 +25,7 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
     $sql              = "INSERT INTO events(title, nombre_cliente, start, end, start_fecha, start_horas, end_horas, correo_cliente, numero_telefono, comentario, empleado, servicio , confirm, token_confirm) 
                                     values ('$title', '$nombre_cliente', '$horario_inicio', '$horario_final', '$new_start[0]', '$horarios[0]', '$horarios[1]', '$correo', '$telefono', '$cometario', '$empleado', '$servicio', '0', '$hash')";
     mysqli_query($conn, $sql);
-  /*  $mail = new PHPMailer(true);
+    $mail = new PHPMailer(true);
     try {
         //Server settings
         $mail->isSMTP();                                            //Send using SMTP
@@ -34,19 +34,18 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
         $mail->Username   = 'confirmarturno@gmail.com';                     //SMTP username
         $mail->Password   = 'ouzdggknolwjphzi';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 443;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
         $mail->setFrom('pruebasterrens@gmail.com', 'Booking System');
         $mail->addAddress($correo);     //Add a recipient 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Comfirmar Turno';
-        $mail->Body    = 'http://localhost/booking-main2/confirmar_turno.php?email='.$correo.'&hash='.$hash.'';
+        $mail->Body    = 'http://localhost/booking-main/confirmar_turno.php?email='.$correo.'&hash='.$hash.'';
         $mail->send();
     } catch (Exception $e) {
         echo "error: {$mail->ErrorInfo}";
-    } */
+    }
 }
-
 header('Location: confirm.php');
-?>
+?> 

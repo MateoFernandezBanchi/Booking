@@ -40,8 +40,7 @@ if(empty($emp)){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href='css/fullcalendar.css' rel='stylesheet' />
- <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
- <link rel="stylesheet" href="./css/test.php">
+    <link rel="stylesheet" href="./css/test.php">
     <style>
     body {
         padding-top: 70px;
@@ -56,7 +55,6 @@ if(empty($emp)){
     }
     </style>
 </head>
-
 <body class="d-flex flex-column h-100" style="padding-top: 0px;">
     <input type="text" style="display: none;" data-from-1="<?php echo $array_dias[0]?>"
         data-from-2="<?php echo $array_dias[1]?>" data-from-3="<?php echo $array_dias[2]?>" id="dias_laborales">
@@ -71,7 +69,7 @@ if(empty($emp)){
         <?php while($contenido = mysqli_fetch_array($cont)){ ?>
         <section class="">
             <div class="container px-5 servicioHero">
-                <div id="descripcionServicio" class=" row gx-5 justify-content-center align-items-center">
+                <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
@@ -84,21 +82,31 @@ if(empty($emp)){
                             <div class="modal-content">
                                 <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
                                     <div class="modal-header header_SelectDoctor">
-                                        <h4 class="modal-title" id="myModalLabel">Select a Professional</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Select Profesional</h4>
                                     </div>
                                     <div class="modal-body">
                                     <div class="col-sm-10">
-                                <?php
-                                    if ($servicio == "extraccion" || $servicio == "ortodoncia" || $servicio == "blanqueamiento" || $servicio == "Fluor" || $servicio == "emeplo"){
+                                    <?php   
+                                        $sql_serv = "SELECT * FROM contenido_paginas WHERE tipo_contenido = 'seccion'";
+                                        $query_serv = mysqli_query($conn, $sql_serv);
+                                        $z = 0;
+                                        while ($row_serv = mysqli_fetch_array($query_serv)) {
+                                            $serv[$z] = $row_serv['servicio'];
+                                            $z++;
+                                        }
+                                        $count_serv = count($serv);
+                                        for($s = 0; $s < $count_serv; $s++){ 
+                                        if ($servicio == $serv[$s]){
                                         $sql_se = "SELECT * FROM servicios WHERE servicio = '$servicio'";
                                         $query_se = mysqli_query($conn, $sql_se);
                                     ?>
                                     <select name="empleado" class="form-control" id="empleado">
                                         <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
                                             <option value="<?php echo $datos_se['empleado']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['empleado']?></option>
-                                            <?php } ?>
+                                        <?php } ?>
                                     </select>
-                                    <?php } ?>
+                                    <?php } 
+                                    } ?>
                                 </div>
                                     </div>
                                     <div class="modal-footer">
@@ -110,18 +118,22 @@ if(empty($emp)){
                     </div>
                 </div>
         </section>
-
-
-    <footer class=" py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; Webii 2022</div>
-                </div>
-            </div>
-        </footer>
-
-        <script>
+        <footer class="py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto">
+                    <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
+                    </div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                 </div>
+        
+                 <script>
         const btnDenied = document.getElementById('btnDenied');
         btnDenied.addEventListener('click', toggle);
 
@@ -129,8 +141,7 @@ if(empty($emp)){
             btnDenied.parentElement.parentElement.parentElement.classList.add('toggle');
         }
         </script>
-        <?php
-}else{
+<?php }else{
 $empleado = $_SESSION['empleado'];
 $servicio = $_SESSION['servicio'];
 $sql    = "SELECT id, title, start, end, color FROM events WHERE empleado = '$empleado' AND vacations = 1 AND end >= now() - INTERVAL 1 DAY";
@@ -163,7 +174,6 @@ $dia7 = $dia[6];
 ?>
         <!DOCTYPE html>
         <html lang="en">
-
         <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -177,158 +187,162 @@ $dia7 = $dia[6];
             <!-- Core theme CSS (includes Bootstrap)-->
             <link href="css/styles.css" rel="stylesheet" />
             <link href='css/fullcalendar.css' rel='stylesheet' />
-            <!-- <link rel="stylesheet" href="./css/styles2.min.css"> -->
-    <link rel="stylesheet" href="./css/test.php">
+            <link rel="stylesheet" href="./css/styles2.min.css">
             <style>
             body {
                 padding-top: 70px;
             }
-
             #calendar {
                 max-width: 1000px;
                 margin-bottom: 50px;
             }
-
             .col-centered {
                 float: none;
                 margin: 0 auto;
             }
             </style>
         </head>
-
         <body class="d-flex flex-column h-100" style="padding-top: 0px;">
             <input type="text" style="display: none;" data-from-1="<?php echo $array_dias[0]?>"
                 data-from-2="<?php echo $array_dias[1]?>" data-from-3="<?php echo $array_dias[2]?>" id="dias_laborales">
             <input type="text" style="display: none;" data-from="<?php echo $fechas['start']?>"
                 data-to="<?php echo $fechas['end']?>" id="fecha_vac">
             <main class="flex-shrink-0">
-                <!-- Navigation-->
                 <nav class="navbar navbar-expand-lg navbar-dark navContainer">
                     <div class="container px-5">
                         <a class="navbar-brand" href="/booking-main2">HOME</a>
                     </div>
                 </nav>
-                <!-- Page Content-->
                 <?php while($contenido = mysqli_fetch_array($cont)){ ?>
                 <section>
-                <div class="container px-5 servicioHero">
-                <div id="descripcionServicio" class="  row gx-5 justify-content-center align-items-center">
+                    <div class="container px-5 servicioHero">
+                        <div id="descripcionServicio" class="row gx-5 justify-content-center align-items-center">
                             <div class="col-lg-6">
                                 <div class="text-center mb-5">
                                     <h1 class="fw-bolder"><?php echo $contenido['titulo'];?></h1>
-                                    <p class="lead fw-normal mb-0"><?php echo $contenido['descripcion'];?>
+                                    <p class="lead fw-normal b-0"><?php echo $contenido['descripcion'];?>
                                     </p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="modal-dialog modalContainer" role="document">
+                                <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <form class="form-horizontal" method="POST" action="portfolio-item.php#turnos">
                                             <div class="modal-header header_SelectDoctor">
-                                                <h4 class="modal-title" id="myModalLabel">Select a professional:</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Seleccione un Doctor:</h4>
                                             </div>
-                                            <div class="modal-body">
-                                            <div class="col-sm-10">
-                                <?php
-                                    if ($servicio == "extraccion" || $servicio == "ortodoncia" || $servicio == "blanqueamiento" || $servicio == "Fluor" || $servicio == "emeplo"){
-                                        $sql_se = "SELECT * FROM servicios WHERE servicio = '$servicio'";
-                                        $query_se = mysqli_query($conn, $sql_se);
-                                    ?>
-                                    <select name="empleado" class="form-control" id="empleado">
-                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
-                                            <option value="<?php echo $datos_se['empleado']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['empleado']?></option>
-                                            <?php } ?>
-                                    </select>
-                                    <?php } ?>
-                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn button1">Next</button>
-                                            </div>
+                                                <div class="modal-body">
+                                                    <div class="col-sm-10">
+                                                    <?php   
+                                                        $sql_serv_2 = "SELECT * FROM contenido_paginas WHERE tipo_contenido = 'seccion'";
+                                                        $query_serv_2 = mysqli_query($conn, $sql_serv_2);
+                                                        $n = 0;
+                                                        while ($row_serv_2 = mysqli_fetch_array($query_serv_2)) {
+                                                            $serv_2[$n] = $row_serv_2['servicio'];
+                                                            $n++;
+                                                        }
+                                                        $count_serv_2= count($serv_2);
+                                                        for($ñ = 0; $ñ < $count_serv_2; $ñ++){ 
+                                                        if ($servicio == $serv_2[$ñ]){
+
+                                                        $sql_se = "SELECT * FROM servicios WHERE servicio = '$servicio'";
+                                                        $query_se = mysqli_query($conn, $sql_se);
+                                                    ?>
+                                                    <select name="empleado" class="form-control" id="empleado">
+                                                        <?php while($datos_se = mysqli_fetch_array($query_se)){ ?>
+                                                            <option value="<?php echo $datos_se['empleado']?>-<?php echo $datos_se['servicio']?>"><?php echo $datos_se['empleado']?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                    <?php } 
+                                                    } ?>
+                                                    </div>
+                                                </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn button1">Next</button>
+                                        </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row gx-5">
                     </div>
                     <?php }?>
                     <div class="row  mt-5 calendarContainer">
                         <div class="col-lg-12 text-center ">
                             <h1 id="turnos">Appoinments</h1>
-                            <h4 class="my-4 mx-4">
+                            <h4 class="mb-4 mt-4">
                                 Select a day on the calendar to book your appoinment with
                                 <?php echo $empleado?></h4>
                             <div id="calendar" class="col-centered calendar">
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog modalContainer" role="document">
-                            <div class="modal-content">
-                                <form class="form-horizontal" method="POST" action="select_horario.php">
-                                    <div class="modal-header headerPersonal">
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            You will request an appoinment:</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group" style="display: none;">
-                                            <div class="col-sm-10">
-                                                <input type="text" name="empleado" class="form-control" id="title"
-                                                    placeholder="Titulo" value="<?php echo $empleado?>">
+                        <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <form class="form-horizontal" method="POST" action="select_horario.php">
+                                        <div class="modal-header headerPersonal">
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                You will request an appoinment:</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group" style="display: none;">
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="empleado" class="form-control" id="title"
+                                                        placeholder="Titulo" value="<?php echo $empleado?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none;">
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="servicio" class="form-control" id="title"
+                                                        placeholder="Titulo" value="<?php echo $servicio?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="start" class="col-sm-2 control-label">For the day:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="start" class="form-control" id="start"
+                                                        format='YYYY-MM-DD' readonly>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group" style="display: none;">
-                                            <div class="col-sm-10">
-                                                <input type="text" name="servicio" class="form-control" id="title"
-                                                    placeholder="Titulo" value="<?php echo $servicio?>">
-                                            </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn button1">Next</button>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="start" class="col-sm-2 control-label">For the day:</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="start" class="form-control" id="start"
-                                                    format='YYYY-MM-DD' readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn button1">Next</button>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
                 </section>
             </main>
-            <!-- Footer-->
             <footer class=" py-4 mt-auto">
                 <div class="container px-5">
                     <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                         <div class="col-auto">
                         <div class="small m-0 text-white"><p>Copyright &copy;Webii <script>document.write(new Date().getFullYear())</script></p></div>
                         </div>
+                        <div class="col-auto">
+                            <a class="link-light small" href="#!">Privacy</a>
+                            <span class="text-white mx-1">&middot;</span>
+                            <a class="link-light small" href="#!">Terms</a>
+                            <span class="text-white mx-1">&middot;</span>
+                            <a class="link-light small" href="#!">Contact</a>
+                        </div>
                     </div>
                 </div>
             </footer>
-            <!-- Bootstrap core JS-->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                crossorigin="anonymous">
-            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
             <script src="js/scripts.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous">
-            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
             <script src="assets/demo/chart-area-demo.js"></script>
             <script src="assets/demo/chart-bar-demo.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
             <script src="js/datatables-simple-demo.js"></script>
             <script src="js/jquery.js"></script>
-            <!-- Bootstrap Core JavaScript -->
             <script src="js/bootstrap.min.js"></script>
-            <!-- FullCalendar -->
             <script src='js/moment.min.js'></script>
             <script src='js/fullcalendar/fullcalendar.min.js'></script>
             <script src='js/fullcalendar/fullcalendar.js'></script>
@@ -361,7 +375,7 @@ $dia7 = $dia[6];
                     defaultView: 'month',
                     defaultDate: yyyy + "-" + mm + "-" + dd,
                     editable: false,
-                    eventLimit: true, // allow "more" link when too many events
+                    eventLimit: true, 
                     selectable: true,
                     selectHelper: false,
                     slotEventOverlap: true,
@@ -397,12 +411,10 @@ $dia7 = $dia[6];
                             $('#ModalEdit').modal('show');
                         });
                     },
-
-                    events: [
+            events: [
             <?php while($event = mysqli_fetch_array($events)){
             $start = explode(" ", $event['start']);
             $end = explode(" ", $event['end']);
-
             if($start[1] == '00:00:00'){
                 $start = $start[0];
             }else{
@@ -421,12 +433,16 @@ $dia7 = $dia[6];
                 end: '<?php echo $end; ?>',
                 color: '<?php echo $event['color']; ?>'
             },
-        <?php } ?>    
-        
-                    ]
-                });
+            <?php } ?>    
+            ]
             });
-            </script>
-        </body>
-        </html>
-        <?php } ?>
+            });
+            const btnDenied = document.getElementById('btnDenied');
+            btnDenied.addEventListener('click', toggle);
+            function toggle() {
+                btnDenied.classList.add('toggle');
+            }
+        </script>
+    </body>
+</html>
+<?php } ?>
