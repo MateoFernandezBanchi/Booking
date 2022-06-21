@@ -120,11 +120,29 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                     <div class="col-lg-4 mb-5 cardServicio">
                     <a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">
                         <div class="card h-100 shadow border-0">
+
+                            <?php if(empty($row['imagen1'])){ ?>
+                            <img class="card-img-top" src="http://localhost/admin-main/images/480x320.png" alt="..." />
+                            <?php }else{ ?> 
                             <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $row['imagen1']?>" alt="..." />
+                            <?php } ?>
+
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                 <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
                                 <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
+
+                                <?php if(empty($row['duration'])){ ?>
+                                <p class="card-text mb-0"> Duration -- hrs</p>
+                                <?php }else{ ?> 
+                                <p class="card-text mb-0"> Duration <?php echo $row['duration']?> hrs</p>
+                                <?php } ?>
+
+                                <?php if(empty($row['price'])){ ?>
+                                    <p class="card-text mb-0">Price $ --</p>
+                                <?php }else{ ?> 
+                                    <p class="card-text mb-0">Price $<?php echo $row['price']?></p>
+                                <?php } ?>     
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0">
                                 <div class="d-flex justify-content-center mb-5">
