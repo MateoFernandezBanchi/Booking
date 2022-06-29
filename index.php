@@ -47,8 +47,8 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-6 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-5 fw-bolder text-white mb-2 test">Main Title</h1>
-                            <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
+                            <h1 class="display-5 fw-bolder text-white mb-2 test">Hairdressing</h1>
+                            <p class="lead fw-normal text-white-50 mb-4">Hair care</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis exercitationem perferendis aliquam, sit possimus error?
 
                             </p>
@@ -58,7 +58,7 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                         </div>
                     </div>
                     <div class="col-xl-6 col-xxl-6 d-none d-xl-block text-center imgIndex"><img
-                            class="img-fluid rounded-3 my-5" src="http://localhost/admin-main/images/<?php echo $images_cat['imagen1']?>" alt="..." /></div>
+                            class="img-fluid rounded-3 my-5" src="http://localhost/admin-main/images/index.png" alt="..." /></div>
                   </div>
             </div>
         </header>
@@ -101,11 +101,11 @@ $images_serv = mysqli_fetch_array($cont_img_serv);
                     <div class="col-lg-4 mb-5 cardServicio">
                     <a href="categories.php?servicio=seccion&tipo=<?php echo $row['tipo_servicio']?>">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $images_serv['imagen1']?>" alt="..." />
+                                <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $row['imagen1']?>" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                     <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
-                                    <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
+                                   <!-- <p class="card-text mb-0"><?php echo $row['descripcion']?></p> -->
                                 </div>
                                 <div class="card-footer p-4 pt-0 border-top-0">
                                     <div class="d-flex justify-content-center mb-5">

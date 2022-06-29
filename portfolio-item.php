@@ -347,7 +347,6 @@ $dia7 = $dia[6];
             <script src='js/fullcalendar/fullcalendar.min.js'></script>
             <script src='js/fullcalendar/fullcalendar.js'></script>
             <script src='js/fullcalendar/locale/es.js'></script>
-            <script src="jquery.ui.touch.js"></script>
             <script>
             var a = <?php echo $dia1;?>;
             var b = <?php echo $dia2;?>;

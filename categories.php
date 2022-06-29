@@ -65,11 +65,11 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                     </div>
                     <div class="col-lg-8 col-xl-6 col-xxl-6 heroContainer">
                         <div class="my-5 text-center text-xl-start ">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Main Title</h1>
-                            <p class="lead fw-normal text-white-50 mb-4">Subtitle</p>
+                            <h1 class="display-5 fw-bolder text-white mb-2">Klipp</h1>
+                            <p class="lead fw-normal text-white-50 mb-4">Haircuts</p>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio dolore harum deserunt
                                 veniam odit nemo autem qui earum inventore non maxime soluta assumenda, nobis
-                                exercitationem perferendis aliquam, sit possimus error?
+                                exercitationem perferendis aliquam, sit possimus error
                             </p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="button1 btn-lg px-4 me-sm-3" href="#servicios">Choose Service</a>
