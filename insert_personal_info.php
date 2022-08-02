@@ -27,11 +27,9 @@ $servicio             = $_POST['servicio'];
     body {
         padding-top: 70px;
     }
-
     #calendar {
         max-width: 800px;
     }
-
     .col-centered {
         float: none;
         margin: 0 auto;
@@ -127,6 +125,7 @@ $servicio             = $_POST['servicio'];
                         <button type="submit" class="btn btn-primary btnPersonal" id='btnSubmit'>Confirm</button>
                     </div>
                 </form>
+                <button class="btn btn-primary btnPersonal"><a href="login.php?servicio=<?php echo $servicio?>&empleado=<?php echo $empleado?>&horario=<?php echo $horario_seleccionado?>&start=<?php echo $fecha_seleccionada?>">Login</a></button>
             </div>
             </div>
         </section>

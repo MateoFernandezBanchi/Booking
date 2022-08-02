@@ -290,14 +290,12 @@ $dia7 = $dia[6];
                                         <div class="modal-body">
                                             <div class="form-group" style="display: none;">
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="empleado" class="form-control" id="title"
-                                                        placeholder="Titulo" value="<?php echo $empleado?>">
+                                                    <input type="text" name="empleado" value="<?php echo $empleado?>">
                                                 </div>
                                             </div>
                                             <div class="form-group" style="display: none;">
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="servicio" class="form-control" id="title"
-                                                        placeholder="Titulo" value="<?php echo $servicio?>">
+                                                    <input type="text" name="servicio" value="<?php echo $servicio?>">
                                                 </div>
                                             </div>
                                             <div class="form-group">

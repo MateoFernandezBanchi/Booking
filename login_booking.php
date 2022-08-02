@@ -5,11 +5,17 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require_once('conection.php');
-if (isset($_POST['title']) && isset($_POST['start'])) {
-    $nombre_cliente   = $_POST['nombre_cliente'];
-    $telefono         = $_POST['telefono'];
-    $correo           = $_POST['correo'];
-    $cometario        = $_POST['comentario'];
+    $email=$_POST['email'];
+    $pass=$_POST['pass'];
+    $consulta="SELECT * FROM empleados WHERE correo='$email' AND pass='$pass'";
+    $resultado=mysqli_query($conn, $consulta);
+    $row = mysqli_fetch_array($resultado);
+    $client_id = $row['id'];
+    $nombre   = $row['nombre'];
+    $apellido  = $row['apellido'];
+    $nombre_cliente   = $nombre." ".$apellido;
+    $telefono         = $row['phone'];
+    $correo           = $row['correo'];
     $empleado         = $_POST['empleado'];
     $servicio         = $_POST['servicio'];
     $start            = $_POST['start'];
@@ -21,8 +27,8 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
     is_string($horarios);
     $horario_inicio   = $new_start[0] . " " . $horarios[0];
     $horario_final    = $new_start[0] . " " . $horarios[1];
-    $sql              = "INSERT INTO events(id_type, title, nombre_cliente, start, end, start_fecha, start_horas, end_horas, correo_cliente, numero_telefono, comentario, empleado, servicio, estado , confirm, token_confirm) 
-                                    values (1, 'Ocupado', '$nombre_cliente', '$horario_inicio', '$horario_final', '$new_start[0]', '$horarios[0]', '$horarios[1]', '$correo', '$telefono', '$cometario', '$empleado', '$servicio', 'Pendiente', '0', '$hash')";
+    $sql              = "INSERT INTO events(id_type,client_id , title, nombre_cliente, start, end, start_fecha, start_horas, end_horas, correo_cliente, numero_telefono, empleado, servicio, estado , confirm, token_confirm) 
+                                    values (1,'$client_id' , 'Ocupado', '$nombre_cliente', '$horario_inicio', '$horario_final', '$new_start[0]', '$horarios[0]', '$horarios[1]', '$correo', '$telefono', '$empleado', '$servicio', 'Pendiente', '0', '$hash')";
     mysqli_query($conn, $sql);
     $mail = new PHPMailer(true);
     try {
@@ -45,6 +51,5 @@ if (isset($_POST['title']) && isset($_POST['start'])) {
     } catch (Exception $e) {
         echo "error: {$mail->ErrorInfo}";
     }
-}
 header('Location: confirm.php');
-?> 
+?>

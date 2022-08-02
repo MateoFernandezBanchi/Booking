@@ -76,33 +76,11 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </header>
         <!-- Features section-->
-        <!-- Testimonial section-->
-        <!-- <div class="py-5 bg-light">
-            <div class="container px-5 my-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-10 col-xl-7">
-                        <div class="text-center">
-                            <div class="fs-4 mb-4 fst-italic">"Cada diente en la cabeza de un hombre es más valioso que
-                                un diamante."</div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
-                                    alt="..." />
-                                <div class="fw-bold">
-                                    Miguel de Cervantes
-                                    <span class="fw-bold text-primary mx-1">/</span>
-                                    Dentista
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
         <!-- Blog preview section-->
         <section class="py-5 mainContainer" id="servicios">
             <div class="container px-5 my-5">
@@ -110,8 +88,7 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                     <div class="col-lg-8 col-xl-6">
                         <div class="text-center">
                             <h2 class="fw-bolder">Services</h2>
-                            <p class="lead fw-normal text-muted mb-5">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit.</p>
+                            <p class="lead fw-normal text-muted mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
                 </div>
@@ -120,24 +97,20 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
                     <div class="col-lg-4 mb-5 cardServicio">
                     <a href="portfolio-item.php?servicio=<?php echo $row['servicio']?>#turnos">
                         <div class="card h-100 shadow border-0">
-
                             <?php if(empty($row['imagen1'])){ ?>
                             <img class="card-img-top" src="http://localhost/admin-main/images/480x320.png" alt="..." />
                             <?php }else{ ?> 
                             <img class="card-img-top" src="http://localhost/admin-main/images/<?php echo $row['imagen1']?>" alt="..." />
                             <?php } ?>
-
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                 <h5 class="card-title mb-3"><?php echo $row['titulo']?></h5>
                                 <p class="card-text mb-0"><?php echo $row['descripcion']?></p>
-
                                 <?php if(empty($row['duration'])){ ?>
                                 <p class="card-text mb-0"> Duration -- hrs</p>
                                 <?php }else{ ?> 
                                 <p class="card-text mb-0"> Duration <?php echo $row['duration']?> hrs</p>
                                 <?php } ?>
-
                                 <?php if(empty($row['price'])){ ?>
                                     <p class="card-text mb-0">Price $ --</p>
                                 <?php }else{ ?> 
@@ -177,5 +150,4 @@ $images_cat = mysqli_fetch_array($cont_img_cat);
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 </body>
-
 </html>

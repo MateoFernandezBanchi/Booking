@@ -111,7 +111,7 @@ require_once('conection.php');
                         <div class="col-sm-10">
                            <select name="horario" class="form-control" id="empleado">
                            <?php
-                              $sql_f   = "SELECT id, hora_inicio, hora_final FROM horarios_turnos WHERE empleado = '$empleado' AND servicio = '$servicio'";
+                              $sql_f   = "SELECT id, hora_inicio, hora_final, data_hora_ini, data_hora_end FROM horarios_turnos WHERE empleado = '$empleado' AND servicio = '$servicio'";
                               $events_f = mysqli_query($conn, $sql_f);
                               if(mysqli_num_rows($events_f) != NULL)
                               {
@@ -126,7 +126,7 @@ require_once('conection.php');
                                   {                                    
                                      while ($data_f = mysqli_fetch_array($events_f)) 
                                        {                                 
-                                           echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['hora_inicio']."-".$data_f['hora_final']."</option>";
+                                           echo "<option style='color:#000;'value=".$data_f['hora_inicio']."-".$data_f['hora_final'].">".$data_f['data_hora_ini']."-".$data_f['data_hora_end']."</option>";
                                        } 
                                   }    
                               }                                     
